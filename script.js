@@ -1,4 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // 1. MODO ESCURO PERSISTENTE
+  const themeToggle = document.getElementById("theme-toggle");
+  const savedTheme = localStorage.getItem("aquaimpacto-theme") || "light";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+  themeToggle.textContent = savedTheme === "dark" ? "Modo Claro" : "Modo Escuro";
+
+  themeToggle.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("aquaimpacto-theme", next);
+    themeToggle.textContent = next === "dark" ? "Modo Claro" : "Modo Escuro";
+  });
+
+  // 2. REFERÊNCIAS DE INPUTS E LABELS
   const inputs = {
     banhos: document.getElementById("banhos"),
     tempoBanho: document.getElementById("tempoBanho"),
@@ -7,55 +22,54 @@ document.addEventListener("DOMContentLoaded", () => {
     louca: document.getElementById("louca"),
     maquina: document.getElementById("maquina"),
     mangueira: document.getElementById("mangueira"),
+    carne: document.getElementById("carne"),
+    roupas: document.getElementById("roupas"),
+    desperdicioComida: document.getElementById("desperdicioComida"),
+    papel: document.getElementById("papel"),
   };
 
-  const labels = {
-    banhos: document.getElementById("val-banhos"),
-    tempoBanho: document.getElementById("val-tempoBanho"),
-    descargas: document.getElementById("val-descargas"),
-    higiene: document.getElementById("val-higiene"),
-    louca: document.getElementById("val-louca"),
-    maquina: document.getElementById("val-maquina"),
-    mangueira: document.getElementById("val-mangueira"),
+  const habits = {
+    banho: document.getElementById("hab-banho"),
+    torneira: document.getElementById("hab-torneira"),
+    balde: document.getElementById("hab-balde"),
+    carne: document.getElementById("hab-carne"),
   };
 
   let escalaColetiva = 100;
 
   const presets = {
-    economico: { banhos: 1, tempoBanho: 6, descargas: 4, higiene: 2, louca: 5, maquina: 1, mangueira: 0 },
-    medio: { banhos: 2, tempoBanho: 10, descargas: 5, higiene: 4, louca: 10, maquina: 2, mangueira: 15 },
-    alto: { banhos: 2, tempoBanho: 18, descargas: 7, higiene: 8, louca: 20, maquina: 4, mangueira: 45 },
+    economico: { banhos: 1, tempoBanho: 6, descargas: 4, higiene: 2, louca: 5, maquina: 1, mangueira: 0, carne: 2, roupas: 1, desperdicioComida: 0, papel: 5 },
+    medio: { banhos: 2, tempoBanho: 10, descargas: 5, higiene: 4, louca: 10, maquina: 2, mangueira: 15, carne: 4, roupas: 2, desperdicioComida: 2, papel: 20 },
+    alto: { banhos: 2, tempoBanho: 18, descargas: 7, higiene: 8, louca: 20, maquina: 4, mangueira: 45, carne: 8, roupas: 5, desperdicioComida: 4, papel: 50 },
   };
 
-  function formatarBR(valor, decimais = 1) {
-    return valor.toLocaleString("pt-BR", {
-      minimumFractionDigits: decimais,
-      maximumFractionDigits: decimais,
-    });
+  function fmt(num, dec = 1) {
+    return num.toLocaleString("pt-BR", { minimumFractionDigits: dec, maximumFractionDigits: dec });
   }
 
-  function atualizarCalculos() {
-    const v = {
-      banhos: Number(inputs.banhos.value),
-      tempoBanho: Number(inputs.tempoBanho.value),
-      descargas: Number(inputs.descargas.value),
-      higiene: Number(inputs.higiene.value),
-      louca: Number(inputs.louca.value),
-      maquina: Number(inputs.maquina.value),
-      mangueira: Number(inputs.mangueira.value),
-    };
+  function atualizarTudo() {
+    const v = {};
+    Object.keys(inputs).forEach((k) => {
+      v[k] = Number(inputs[k].value);
+    });
 
-    // Atualiza textos dos sliders
-    labels.banhos.textContent = `${v.banhos} ${v.banhos === 1 ? "banho" : "banhos"}`;
-    labels.tempoBanho.textContent = `${v.tempoBanho} min`;
-    labels.descargas.textContent = `${v.descargas} ${v.descargas === 1 ? "vez" : "vezes"}`;
-    labels.higiene.textContent = `${v.higiene} min/dia`;
-    labels.louca.textContent = `${v.louca} min/dia`;
-    labels.maquina.textContent = `${v.maquina} ${v.maquina === 1 ? "vez/sem" : "vezes/sem"}`;
-    labels.mangueira.textContent = `${v.mangueira} min/sem`;
+    // Atualiza textos dos controles diretos
+    document.getElementById("val-banhos").textContent = `${v.banhos} ${v.banhos === 1 ? "banho" : "banhos"}`;
+    document.getElementById("val-tempoBanho").textContent = `${v.tempoBanho} min`;
+    document.getElementById("val-descargas").textContent = `${v.descargas} ${v.descargas === 1 ? "vez" : "vezes"}`;
+    document.getElementById("val-higiene").textContent = `${v.higiene} min/dia`;
+    document.getElementById("val-louca").textContent = `${v.louca} min/dia`;
+    document.getElementById("val-maquina").textContent = `${v.maquina} ${v.maquina === 1 ? "vez/sem" : "vezes/sem"}`;
+    document.getElementById("val-mangueira").textContent = `${v.mangueira} min/sem`;
 
-    // Cálculos diários por atividade (litros)
-    const atividades = [
+    // Atualiza textos dos controles de água invisível
+    document.getElementById("val-carne").textContent = `${v.carne} porções/sem`;
+    document.getElementById("val-roupas").textContent = `${v.roupas} peças/mês`;
+    document.getElementById("val-desperdicioComida").textContent = `${v.desperdicioComida} pratos/sem`;
+    document.getElementById("val-papel").textContent = `${v.papel} folhas/sem`;
+
+    // Cálculos Uso Direto (L/dia)
+    const diretoItens = [
       { nome: "Banho", litros: v.banhos * v.tempoBanho * 9 },
       { nome: "Descarga sanitária", litros: v.descargas * 10 },
       { nome: "Lavar louça", litros: v.louca * 8 },
@@ -64,147 +78,185 @@ document.addEventListener("DOMContentLoaded", () => {
       { nome: "Torneira (dentes/mãos)", litros: v.higiene * 6 },
     ];
 
-    const diario = atividades.reduce((acc, item) => acc + item.litros, 0);
-    const mensal = diario * 30;
-    const anual = diario * 365;
-    const m3Mensal = mensal / 1000;
+    const diretoDia = diretoItens.reduce((acc, i) => acc + i.litros, 0);
+    const diretoMes = diretoDia * 30;
+    const diretoAno = diretoDia * 365;
 
-    // KPIs principais
-    document.getElementById("kpi-diario").textContent = `${formatarBR(diario, 0)} L`;
-    document.getElementById("kpi-mensal").textContent = `${formatarBR(mensal, 0)} L`;
-    document.getElementById("kpi-m3").textContent = `${formatarBR(m3Mensal, 2)} m³/mês`;
-    document.getElementById("kpi-anual").textContent = `${formatarBR(anual / 1000, 1)} mil L`;
+    // Cálculos Água Invisível (L/dia)
+    const invCarneDia = (v.carne * 1540) / 7;
+    const invRoupasDia = (v.roupas * 2700) / 30;
+    const invComidaDia = (v.desperdicioComida * 1000) / 7;
+    const invPapelDia = (v.papel * 10) / 7;
+    const invisivelDia = invCarneDia + invRoupasDia + invComidaDia + invPapelDia;
 
-    // Status e Régua (escala até 300 L/dia)
+    const pegadaTotalDia = diretoDia + invisivelDia;
+
+    // KPIs Principais
+    document.getElementById("kpi-diario").textContent = `${fmt(diretoDia, 0)} L`;
+    document.getElementById("kpi-mensal").textContent = `${fmt(diretoMes, 0)} L`;
+    document.getElementById("kpi-m3").textContent = `${fmt(diretoMes / 1000, 2)} m³/mês`;
+    document.getElementById("kpi-total-real").textContent = `${fmt(pegadaTotalDia, 0)} L/dia`;
+
+    // Régua e Status
     const statusBadge = document.getElementById("kpi-status-badge");
     const statusDesc = document.getElementById("status-descricao");
     const rulerFill = document.getElementById("ruler-fill");
-    const porcentagemRegua = Math.min(100, (diario / 300) * 100);
-    rulerFill.style.width = `${porcentagemRegua}%`;
+    rulerFill.style.width = `${Math.min(100, (diretoDia / 300) * 100)}%`;
 
-    if (diario <= 110) {
+    if (diretoDia <= 110) {
       statusBadge.textContent = "Sustentável (Meta ONU)";
       statusBadge.className = "kpi-foot badge-ok";
       rulerFill.style.backgroundColor = "#15803d";
-      statusDesc.textContent = "Excelente! Seu consumo está dentro do limite de 110 L/dia recomendado pela ONU.";
-    } else if (diario <= 180) {
+      statusDesc.textContent = "Excelente! Seu uso direto está dentro do limite sustentável de 110 L/dia da ONU.";
+    } else if (diretoDia <= 180) {
       statusBadge.textContent = "Alerta de Excesso";
       statusBadge.className = "kpi-foot badge-warn";
       rulerFill.style.backgroundColor = "#d97706";
-      statusDesc.textContent = `Atenção: Você consome ${formatarBR(diario - 110, 0)} L/dia acima da meta sustentável da ONU.`;
+      statusDesc.textContent = `Atenção: Você consome ${fmt(diretoDia - 110, 0)} L/dia acima da meta recomendada pela ONU.`;
     } else {
       statusBadge.textContent = "Crítico (Alto Desperdício)";
       statusBadge.className = "kpi-foot badge-danger";
       rulerFill.style.backgroundColor = "#b91c1c";
-      statusDesc.textContent = `Crítico: Seu gasto diário é ${(diario / 110).toFixed(1)}x maior que o recomendado pela ONU.`;
+      statusDesc.textContent = `Crítico: Seu consumo direto é ${(diretoDia / 110).toFixed(1)}x maior que o ideal da ONU.`;
     }
 
-    // Lista de barras por atividade
-    const breakdownList = document.getElementById("breakdown-list");
-    breakdownList.innerHTML = "";
-    const ordenadas = [...atividades].sort((a, b) => b.litros - a.litros);
-
-    ordenadas.forEach((item) => {
-      const perc = diario > 0 ? (item.litros / diario) * 100 : 0;
-      const div = document.createElement("div");
-      div.className = "breakdown-item";
-      div.innerHTML = `
+    // Breakdown visual
+    const list = document.getElementById("breakdown-list");
+    list.innerHTML = "";
+    [...diretoItens].sort((a, b) => b.litros - a.litros).forEach((item) => {
+      const perc = diretoDia > 0 ? (item.litros / diretoDia) * 100 : 0;
+      const row = document.createElement("div");
+      row.innerHTML = `
         <div class="breakdown-top">
           <span>${item.nome}</span>
-          <span>${formatarBR(item.litros, 1)} L (${formatarBR(perc, 0)}%)</span>
+          <span>${fmt(item.litros, 1)} L (${fmt(perc, 0)}%)</span>
         </div>
         <div class="breakdown-track">
-          <div class="breakdown-bar" style="width: ${perc}%"></div>
+          <div class="breakdown-bar" style="width:${perc}%"></div>
         </div>
       `;
-      breakdownList.appendChild(div);
+      list.appendChild(row);
     });
 
-    // Consequências reais
-    const excedenteDiario = Math.max(0, diario - 110);
-    const pessoasAtendidas = Math.floor(excedenteDiario / 50);
-    const caixasAno = anual / 1000;
-    const garrafoesAno = Math.round(anual / 20);
-    const custoAnual = caixasAno * 8.5; // Tarifa média estimada R$ 8,50/m³
+    // Água Invisível e Consequências
+    document.getElementById("inv-total-dia").textContent = `${fmt(invisivelDia, 0)} L / dia`;
+    const mult = diretoDia > 0 ? (invisivelDia / diretoDia).toFixed(1) : "0";
+    document.getElementById("inv-multiplier").textContent = `${mult}x maior que o uso na torneira`;
 
+    const excedente = Math.max(0, diretoDia - 110);
+    const pessoas = Math.floor(excedente / 50);
     document.getElementById("imp-pessoas").textContent =
-      pessoasAtendidas > 0 ? `${pessoasAtendidas} ${pessoasAtendidas === 1 ? "pessoa" : "pessoas"}/dia` : "0 pessoas (Dentro da meta)";
+      pessoas > 0 ? `${pessoas} ${pessoas === 1 ? "pessoa/dia" : "pessoas/dia"}` : "0 pessoas (Meta atingida)";
+    document.getElementById("imp-caixas").textContent = `${fmt(diretoAno / 1000, 1)} caixas d'água`;
 
-    document.getElementById("imp-pessoas-desc").textContent =
-      pessoasAtendidas > 0
-        ? `Poderiam suprir seu mínimo vital diário (50L/dia — ONU) apenas com a água excedente do seu consumo.`
-        : `Parabéns! Você não está gerando excedente acima da meta sustentável da ONU.`;
+    // Simulador Antes vs. Depois
+    let novoTempoBanho = v.tempoBanho;
+    let novaHigiene = v.higiene;
+    let novaLouca = v.louca;
+    let novaMangueira = v.mangueira;
+    let economiaInvisivelDia = 0;
 
-    document.getElementById("imp-caixas").textContent = `${formatarBR(caixasAno, 1)} caixas d'água`;
-    document.getElementById("imp-caixas-desc").textContent =
-      `Equivalente a caixas d'água de 1.000 litros (ou ${garrafoesAno.toLocaleString("pt-BR")} garrafões de 20L) consumidas em 1 ano.`;
+    if (habits.banho.checked && v.tempoBanho > 6) {
+      novoTempoBanho = 6;
+    }
+    if (habits.torneira.checked) {
+      novaHigiene = v.higiene * 0.4;
+      novaLouca = v.louca * 0.4;
+    }
+    if (habits.balde.checked) {
+      novaMangueira = v.mangueira * 0.15;
+    }
+    if (habits.carne.checked) {
+      const reducaoPorcoes = Math.min(v.carne, 2);
+      economiaInvisivelDia = (reducaoPorcoes * 1540) / 7;
+    }
 
-    document.getElementById("imp-custo").textContent = `R$ ${formatarBR(custoAnual, 2)} / ano`;
-    document.getElementById("imp-custo-desc").textContent =
-      `Estimativa individual na conta de água e esgoto (projeção de R$ ${formatarBR(custoAnual * 5, 2)} em 5 anos).`;
+    const novoDiretoDia =
+      v.banhos * novoTempoBanho * 9 +
+      v.descargas * 10 +
+      novaLouca * 8 +
+      (v.maquina * 135) / 7 +
+      (novaMangueira * 18) / 7 +
+      novaHigiene * 6;
 
-    // Efeito borboleta
-    const litrosColetivos = (anual * escalaColetiva) / 1_000_000;
-    const caminhoesPipa = Math.round((anual * escalaColetiva) / 10000);
-    document.getElementById("butterfly-liters").textContent = `${formatarBR(litrosColetivos, 2)} milhões de litros/ano`;
-    document.getElementById("butterfly-context").textContent =
-      `Equivalente a ${caminhoesPipa.toLocaleString("pt-BR")} caminhões-pipa de 10.000 litros retirados dos reservatórios locais.`;
+    const novoDiretoAno = novoDiretoDia * 365;
+    const economiaDiretaAno = Math.max(0, diretoAno - novoDiretoAno);
+    const economiaTotalAno = economiaDiretaAno + economiaInvisivelDia * 365;
+    const caixasSalvas = economiaTotalAno / 1000;
+    const reaisSalvosAno = (economiaDiretaAno / 1000) * 8.5;
 
-    // Plano de ação (Maior Vilão)
-    const vilao = ordenadas[0];
-    document.getElementById("villain-name").textContent =
-      vilao.litros > 0 ? `${vilao.nome} (${formatarBR(vilao.litros, 1)} L/dia)` : "Nenhum gasto registrado";
+    document.getElementById("ba-antes").textContent = `${fmt(diretoAno, 0)} L/ano`;
+    document.getElementById("ba-depois").textContent = `${fmt(novoDiretoAno, 0)} L/ano`;
+    document.getElementById("ba-economia-litros").textContent = `${fmt(economiaTotalAno, 0)} litros / ano`;
+    document.getElementById("ba-economia-detalhes").innerHTML =
+      `Equivalente a <strong>${fmt(caixasSalvas, 1)} caixas d'água</strong> de 1.000L salvas e <strong>R$ ${fmt(reaisSalvosAno, 2)}</strong> economizados na conta por ano (<strong>R$ ${fmt(reaisSalvosAno * 10, 2)}</strong> em 10 anos).`;
 
-    const dicas = {
-      "Banho": `Reduzir apenas 3 minutos em cada banho economiza ${formatarBR(v.banhos * 3 * 9 * 365, 0)} litros por ano.`,
-      "Uso de mangueira": "Trocar a mangueira por vassoura e balde reduz o desperdício na limpeza em até 80%.",
-      "Lavar louça": "Ensaboar toda a louça com a torneira fechada reduz esse gasto pela metade.",
-      "Descarga sanitária": "Nunca use o vaso sanitário como lixeira e verifique regularmente se há vazamentos na válvula.",
-      "Máquina de lavar": "Acumule roupas para utilizar a máquina sempre na capacidade máxima e reaproveite a água do enxágue.",
-      "Torneira (dentes/mãos)": "Fechar a torneira enquanto escova os dentes economiza até 12 litros a cada escovação.",
-    };
+    // Efeito Borboleta Coletivo
+    const litColetivoMilhoes = (economiaTotalAno * escalaColetiva) / 1_000_000;
+    const caminhoes = Math.round((economiaTotalAno * escalaColetiva) / 10000);
+    document.getElementById("collective-saved").textContent =
+      `${fmt(litColetivoMilhoes, 2)} milhões de litros preservados/ano`;
+    document.getElementById("collective-trucks").textContent =
+      `Suficiente para encher ${caminhoes.toLocaleString("pt-BR")} caminhões-pipa de 10.000L e proteger os reservatórios locais.`;
 
-    document.getElementById("villain-tip").textContent =
-      vilao.litros > 0 ? dicas[vilao.nome] : "Aumente algum controle para receber uma recomendação.";
+    window.ultimaEconomiaAnual = fmt(economiaTotalAno, 0);
   }
 
-  // Eventos dos sliders
-  Object.values(inputs).forEach((input) => {
-    input.addEventListener("input", atualizarCalculos);
-  });
+  // Eventos nos inputs e checkboxes
+  Object.values(inputs).forEach((el) => el.addEventListener("input", atualizarTudo));
+  Object.values(habits).forEach((el) => el.addEventListener("change", atualizarTudo));
 
-  // Botões de cenários rápidos
+  // Cenários rápidos
   document.querySelectorAll(".btn-preset").forEach((btn) => {
     btn.addEventListener("click", () => {
       const p = presets[btn.dataset.preset];
-      Object.keys(p).forEach((key) => {
-        inputs[key].value = p[key];
+      Object.keys(p).forEach((k) => {
+        inputs[k].value = p[k];
       });
-      atualizarCalculos();
+      atualizarTudo();
     });
   });
 
-  // Botões de escala coletiva
+  // Escala coletiva
   document.querySelectorAll(".scale-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".scale-btn").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       escalaColetiva = Number(btn.dataset.scale);
-      atualizarCalculos();
+      atualizarTudo();
     });
   });
 
-  // Botão copiar código Python
-  const btnCopy = document.getElementById("btn-copy-code");
-  btnCopy.addEventListener("click", () => {
-    const codeText = document.getElementById("python-source").textContent;
-    navigator.clipboard.writeText(codeText).then(() => {
-      btnCopy.textContent = "Código Copiado!";
+  // Gerador de Pacto / Certificado
+  document.getElementById("btn-generate-pact").addEventListener("click", () => {
+    const nome = document.getElementById("pact-name").value.trim() || "Cidadão(ã) Consciente";
+    const meta = document.getElementById("pact-goal").value;
+    const economia = window.ultimaEconomiaAnual || "0";
+
+    const textoCertificado = `Eu, ${nome}, assumi o compromisso AquaImpacto: "${meta}", gerando uma economia estimada de ${economia} litros de água por ano!`;
+    const box = document.getElementById("pact-certificate");
+    document.getElementById("cert-text").textContent = textoCertificado;
+    box.classList.remove("hidden");
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(`${textoCertificado} Calcule o seu impacto também: ${window.location.href}`).then(() => {
+        document.getElementById("cert-feedback").textContent =
+          "Texto do compromisso copiado! Agora é só colar no WhatsApp da turma ou da família.";
+      });
+    }
+  });
+
+  // Copiar código Python
+  const btnCopyCode = document.getElementById("btn-copy-code");
+  btnCopyCode.addEventListener("click", () => {
+    const code = document.getElementById("python-source").textContent;
+    navigator.clipboard.writeText(code).then(() => {
+      btnCopyCode.textContent = "Código Copiado!";
       setTimeout(() => {
-        btnCopy.textContent = "Copiar Código Python";
+        btnCopyCode.textContent = "Copiar Código Python";
       }, 2500);
     });
   });
 
-  atualizarCalculos();
+  atualizarTudo();
 });
