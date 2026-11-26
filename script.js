@@ -35,12 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!cenario.permiteChuva) {
       rainSlider.disabled = true;
-      rainLabel.textContent = "0% (Caixa Fechada)";
+      rainLabel.textContent = "0% (Caixa)";
     } else {
       rainSlider.disabled = false;
-      const pct = Number(rainSlider.value);
-      const desc = pct === 0 ? "Seca Severa" : pct <= 20 ? "Chuvas Irregulares" : "Chuva Regular";
-      rainLabel.textContent = `${pct}% (${desc})`;
+      rainLabel.textContent = `${Number(rainSlider.value)}%`;
     }
 
     const volumeUtil = cenario.capacidade * 0.9;
@@ -50,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const saldoReduzido = consumoColetivo * 0.75 - reposicao;
 
     document.getElementById("dz-collective-flow").textContent =
-      `Consumo coletivo: ${Math.round(consumoColetivo).toLocaleString("pt-BR")} litros/dia`;
+      `Gasto coletivo: ${Math.round(consumoColetivo).toLocaleString("pt-BR")} L/dia`;
 
     const waterFill = document.getElementById("dz-water-fill");
     const tankPct = document.getElementById("dz-tank-pct");
@@ -63,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
       waterFill.className = "tank-fill healthy";
       tankPct.textContent = "ESTÁVEL";
       daysCount.textContent = "SUSTENTÁVEL";
-      collapseDate.textContent = "Sem risco de seca";
-      savedDays.textContent = "Equilíbrio hídrico garantido!";
+      collapseDate.textContent = "Sem risco";
+      savedDays.textContent = "Equilíbrio garantido!";
     } else {
       const dias = Math.max(1, Math.floor(volumeUtil / saldo));
       const dataAlvo = new Date();
@@ -78,11 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
       collapseDate.textContent = dataAlvo.toLocaleDateString("pt-BR");
 
       if (saldoReduzido <= 0) {
-        savedDays.textContent = "Evitaria completamente o Dia Zero!";
+        savedDays.textContent = "Evitaria o Dia Zero!";
       } else {
         const diasNovos = Math.floor(volumeUtil / saldoReduzido);
         const ganho = Math.max(0, diasNovos - dias);
-        savedDays.textContent = `+${ganho.toLocaleString("pt-BR")} dias de abastecimento garantidos`;
+        savedDays.textContent = `+${ganho.toLocaleString("pt-BR")} dias ganhos`;
       }
     }
   }
@@ -103,11 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const atividades = [
       { nome: "Banho", litros: v.banhos * v.tempoBanho * 9 },
-      { nome: "Descarga sanitária", litros: v.descargas * 10 },
-      { nome: "Lavar louça", litros: v.louca * 8 },
+      { nome: "Descarga", litros: v.descargas * 10 },
+      { nome: "Louça", litros: v.louca * 8 },
       { nome: "Máquina de lavar", litros: (v.maquina * 135) / 7 },
-      { nome: "Uso de mangueira", litros: (v.mangueira * 18) / 7 },
-      { nome: "Torneira (dentes/mãos)", litros: v.higiene * 6 },
+      { nome: "Mangueira", litros: (v.mangueira * 18) / 7 },
+      { nome: "Torneira (higiene)", litros: v.higiene * 6 },
     ];
 
     const diario = atividades.reduce((acc, i) => acc + i.litros, 0);
@@ -118,9 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("kpi-diario").textContent = `${fmt(diario, 0)} L`;
     document.getElementById("kpi-status").textContent =
-      diario <= 110 ? "Dentro da meta ONU" : `+${fmt(diario - 110, 0)} L acima da meta`;
+      diario <= 110 ? "Dentro da meta" : `+${fmt(diario - 110, 0)} L acima`;
     document.getElementById("kpi-mensal").textContent = `${fmt(mensal, 0)} L`;
-    document.getElementById("kpi-m3").textContent = `${fmt(mensal / 1000, 2)} m³/mês`;
+    document.getElementById("kpi-m3").textContent = `${fmt(mensal / 1000, 2)} m³`;
     document.getElementById("kpi-anual").textContent = `${fmt(anual / 1000, 1)} mil L`;
     document.getElementById("kpi-caixas").textContent = `${fmt(caixas, 1)} caixas de 1.000L`;
 
@@ -152,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const excedente = Math.max(0, diario - 110);
     const pessoas = Math.floor(excedente / 50);
     document.getElementById("imp-pessoas").textContent =
-      pessoas > 0 ? `${pessoas} ${pessoas === 1 ? "pessoa/dia" : "pessoas/dia"}` : "Meta sustentável atingida";
+      pessoas > 0 ? `${pessoas} ${pessoas === 1 ? "pessoa/dia" : "pessoas/dia"}` : "Meta atingida";
 
     const novoBanho = v.tempoBanho > 6 ? 6 : v.tempoBanho;
     const novoDiario =
@@ -165,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const economiaAno = Math.max(0, (diario - novoDiario) * 365);
     document.getElementById("imp-custo-anual").textContent = `R$ ${fmt(custoAnual, 2)} / ano`;
     document.getElementById("imp-economia").textContent =
-      `Reduzindo o banho para 6 min e fechando a torneira, você poupa ${fmt(economiaAno, 0)} litros/ano.`;
+      `Com banho de 6 min e torneira fechada, você poupa ${fmt(economiaAno, 0)} L/ano.`;
 
     atualizarDiaZero(diario);
   }
@@ -194,30 +192,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // QUIZ INTERATIVO FINAL
+  // QUIZ FINAL
   const questoes = [
     {
-      pergunta: "1. Quantos litros de água são gastos em apenas 1 banho de 15 minutos?",
-      opcoes: ["45 litros", "135 litros (90 litros a mais que um banho de 5 min)", "15 litros"],
+      pergunta: "1. Quantos litros são gastos em 1 banho de 15 minutos?",
+      opcoes: ["45 litros", "135 litros", "15 litros"],
       correta: 1,
     },
     {
-      pergunta: "2. Quanta água uma mangueira aberta consome em 15 minutos de limpeza?",
-      opcoes: ["270 litros (18 litros por minuto)", "30 litros", "10 litros"],
+      pergunta: "2. Quanto água uma mangueira aberta gasta em 15 minutos?",
+      opcoes: ["270 litros", "30 litros", "10 litros"],
       correta: 0,
     },
     {
-      pergunta: "3. O que acontece quando um reservatório atinge o 'Dia Zero' (volume morto de 10%)?",
+      pergunta: "3. O que ocorre quando o reservatório atinge o 'Dia Zero'?",
       opcoes: [
-        "A água fica mais barata na conta.",
-        "As torneiras são fechadas e a população precisa buscar cotas diárias em pontos de distribuição.",
-        "Os rios enchem automaticamente.",
+        "A água fica mais barata.",
+        "Atinge o volume morto (10%) e as torneiras são fechadas.",
+        "Os rios enchem sozinhos.",
       ],
       correta: 1,
     },
     {
-      pergunta: "4. Qual é o limite diário sustentável recomendado pela ONU por pessoa?",
-      opcoes: ["110 litros por dia", "450 litros por dia", "10 litros por dia"],
+      pergunta: "4. Qual é o limite diário sustentável recomendado pela ONU?",
+      opcoes: ["110 litros/dia", "450 litros/dia", "10 litros/dia"],
       correta: 0,
     },
   ];
