@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AquaImpacto — Dados Reais e Consciência Hídrica</title>
+  <title>AquaImpacto — Consciência Hídrica e Sustentabilidade</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- CABEÇALHO LIMPO -->
+  <!-- CABEÇALHO FLUTUANTE -->
   <header class="floating-header">
     <div class="container header-pill">
       <div class="brand">
@@ -23,65 +23,34 @@
         <a href="#simulador">Calculadora</a>
         <a href="#dados-explicitos">Dados & Gastos</a>
         <a href="#dia-zero">Dia Zero</a>
-        <a href="#galeria">Consciência</a>
+        <a href="#galeria">Pilares</a>
         <a href="#quiz">Quiz</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO COM ILUSTRAÇÃO EMBUTIDA -->
+  <!-- BLOCO 1: HERO EDITORIAL -->
   <section class="hero-section">
     <div class="container hero-grid">
       <div class="hero-content">
-        <span class="eco-pill">DADOS EXPLÍCITOS • CONSUMO REAL • IMPACTO NO BOLSO</span>
-        <h2>Quanto mais você usa sem perceber, mais água e dinheiro vão pelo ralo.</h2>
+        <span class="eco-pill">ÁGUA LIMPA • DADOS REAIS • FUTURO SUSTENTÁVEL</span>
+        <h2>Quanto mais você utiliza sem perceber, mais água e dinheiro vão pelo ralo.</h2>
         <p>
-          Apenas <strong>2,5% da água do planeta é doce</strong>, e menos de 1% está acessível para consumo.
-          Cada minuto a mais no chuveiro, na torneira aberta ou na mangueira multiplica o desperdício em milhares de litros por ano.
+          Apenas <strong>2,5% da água do planeta é doce</strong>, e menos de 1% está acessível para consumo humano.
+          Ajuste sua rotina abaixo, veja o impacto real de cada hábito e descubra em quantos dias os reservatórios da sua comunidade entrariam em colapso.
         </p>
         <div class="preset-group">
-          <span>Compare na prática:</span>
+          <span>Simular perfil:</span>
           <button type="button" class="btn-chip" data-preset="economico">Uso Consciente</button>
-          <button type="button" class="btn-chip active" data-preset="medio">Média Brasileira</button>
+          <button type="button" class="btn-chip active" data-preset="medio">Média Brasil</button>
           <button type="button" class="btn-chip" data-preset="alto">Uso Excessivo</button>
         </div>
       </div>
 
       <div class="hero-image-card">
-        <svg viewBox="0 0 640 360" class="scene-svg" role="img" aria-label="Paisagem com rio cristalino e vegetação verde">
-          <defs>
-            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#bae6fd" />
-              <stop offset="100%" stop-color="#f0f9ff" />
-            </linearGradient>
-            <linearGradient id="hillBack" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#6ee7b7" />
-              <stop offset="100%" stop-color="#34d399" />
-            </linearGradient>
-            <linearGradient id="hillFront" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#22b07d" />
-              <stop offset="100%" stop-color="#158059" />
-            </linearGradient>
-            <linearGradient id="riverGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#7dd3fc" />
-              <stop offset="50%" stop-color="#1d9bf0" />
-              <stop offset="100%" stop-color="#0284c7" />
-            </linearGradient>
-          </defs>
-          <rect width="640" height="360" fill="url(#skyGrad)" />
-          <circle cx="510" cy="78" r="38" fill="#ffffff" opacity="0.85" />
-          <path d="M0 200 Q160 120 340 185 T640 155 L640 360 L0 360 Z" fill="url(#hillBack)" />
-          <path d="M0 230 Q210 175 410 235 T640 205 L640 360 L0 360 Z" fill="url(#hillFront)" />
-          <path d="M295 190 C260 225 385 245 315 285 C245 320 140 335 110 360 L470 360 C435 325 370 310 390 275 C415 235 325 215 325 190 Z" fill="url(#riverGrad)" />
-          <ellipse cx="325" cy="268" rx="34" ry="4" fill="#e0f2fe" opacity="0.7" />
-          <ellipse cx="275" cy="318" rx="52" ry="5" fill="#e0f2fe" opacity="0.6" />
-          <circle cx="115" cy="215" r="28" fill="#10b981" />
-          <circle cx="142" cy="222" r="22" fill="#34d399" />
-          <circle cx="515" cy="195" r="32" fill="#10b981" />
-          <circle cx="485" cy="208" r="24" fill="#6ee7b7" />
-        </svg>
+        <img src="rio-preservado.jpg" alt="Rio cristalino cercado por floresta verde preservada" />
         <div class="hero-float-badge">
-          <small>LIMITE SUSTENTÁVEL DA ONU</small>
+          <small>META RECOMENDADA PELA ONU</small>
           <strong>110 litros / dia por pessoa</strong>
         </div>
       </div>
@@ -90,12 +59,12 @@
 
   <main class="container">
 
-    <!-- SEÇÃO 1: SIMULADOR DIRETO -->
+    <!-- BLOCO 2: CALCULADORA INTERATIVA + RAIO-X EXPLÍCITO -->
     <section id="simulador" class="section-block">
       <div class="section-head">
-        <span class="step-badge">01 • SIMULADOR DE GASTOS DIÁRIOS</span>
-        <h3>Quanto mais você utiliza, maior é o impacto</h3>
-        <p>Aumente ou diminua os controles e veja exatamente quantos litros e reais cada hábito consome.</p>
+        <span class="step-badge">01 • CALCULADORA DE CONSUMO E GASTOS</span>
+        <h3>Quanto mais você utiliza, maior é o desperdício</h3>
+        <p>Deslize os controles de acordo com sua rotina e acompanhe o gasto diário, anual e financeiro em tempo real.</p>
       </div>
 
       <div class="sim-grid">
@@ -178,7 +147,7 @@
 
           <div class="card">
             <div class="card-head-inline">
-              <h4>Raio-X Explícito: Quanto cada atividade consome por dia e por ano</h4>
+              <h4>Raio-X Explícito por Atividade (Diário e Anual)</h4>
               <span class="villain-badge" id="maior-vilao">Maior gasto: —</span>
             </div>
             <div id="breakdown-bars" class="bars-list"></div>
@@ -186,12 +155,12 @@
 
           <div class="consequence-cards">
             <div class="card soft-blue">
-              <span class="mini-tag">IMPACTO SOCIAL DIRETO</span>
+              <span class="mini-tag">CONSEQUÊNCIA HUMANA</span>
               <strong id="imp-pessoas">0 pessoas/dia</strong>
-              <p>Poderiam sobreviver com o mínimo vital de água (50 L/dia — ONU) usando apenas o excedente que você gasta acima da meta.</p>
+              <p>Poderiam sobreviver com o mínimo vital de água (50 L/dia — ONU) usando apenas o excedente acima da meta.</p>
             </div>
             <div class="card soft-green">
-              <span class="mini-tag">CUSTO FINANCEIRO DO DESPERDÍCIO</span>
+              <span class="mini-tag">CUSTO ESTIMADO NA CONTA</span>
               <strong id="imp-custo-anual">R$ 0,00 / ano</strong>
               <p id="imp-economia">Reduzindo o banho para 6 min e fechando a torneira, você poupa 0 litros/ano.</p>
             </div>
@@ -200,46 +169,44 @@
       </div>
     </section>
 
-    <!-- SEÇÃO 2: DADOS EXPLÍCITOS DE CONSUMO E DESPERDÍCIO -->
+    <!-- BLOCO 3: A MATEMÁTICA REAL DO DESPERDÍCIO -->
     <section id="dados-explicitos" class="section-block">
       <div class="section-head">
-        <span class="step-badge green">02 • NÚMEROS QUE ABREM OS OLHOS</span>
-        <h3>A matemática real do uso excessivo</h3>
-        <p>Veja de forma clara e direta o que acontece quando aumentamos o tempo de uso no dia a dia.</p>
+        <span class="step-badge green">02 • A MATEMÁTICA REAL DO DESPERDÍCIO</span>
+        <h3>Números explícitos que mostram o peso de cada hábito</h3>
+        <p>Veja o que acontece quando estendemos o tempo de uso no dia a dia versus quando adotamos hábitos conscientes.</p>
       </div>
 
-      <!-- 4 CARTÕES DE IMPACTO NUMÉRICO -->
       <div class="facts-grid">
         <div class="card fact-card">
           <span class="fact-number text-blue">135 Litros</span>
           <h4>1 banho de 15 minutos</h4>
-          <p>Enquanto um banho rápido de <strong>5 minutos gasta 45 litros</strong>, estender para 15 minutos triplica o gasto: são <strong>90 litros jogados fora em um único banho</strong> (32.850 L/ano).</p>
+          <p>Enquanto um banho rápido de <strong>5 minutos gasta 45 litros</strong>, estender para 15 minutos triplica o consumo: são <strong>90 litros extras perdidos</strong> em um único banho.</p>
         </div>
 
         <div class="card fact-card">
           <span class="fact-number text-teal">270 Litros</span>
           <h4>15 min de mangueira aberta</h4>
-          <p>Lavar a calçada ou o carro com mangueira consome <strong>18 litros por minuto</strong>. Usar vassoura e um balde de 10 litros economiza <strong>96% dessa água</strong>.</p>
+          <p>Lavar calçadas ou carros com mangueira consome <strong>18 litros por minuto</strong>. Trocar por vassoura e um balde de 10 litros economiza <strong>96% dessa água</strong>.</p>
         </div>
 
         <div class="card fact-card">
-          <span class="fact-number text-green">46 Litros/dia</span>
-          <h4>Torneira pingando sem parar</h4>
-          <p>Uma torneira gotejando desperdiça <strong>1.380 litros por mês</strong> (mais de uma caixa d'água cheia). Se for um filete fino de 2 mm, o prejuízo passa de <strong>4.000 litros/mês</strong>.</p>
+          <span class="fact-number text-green">1.380 Litros</span>
+          <h4>Torneira pingando no mês</h4>
+          <p>Uma torneira gotejando perde <strong>46 litros por dia</strong> — mais de uma caixa d'água cheia por mês jogada fora sem nenhuma utilidade.</p>
         </div>
 
         <div class="card fact-card">
           <span class="fact-number text-blue">15.400 Litros</span>
           <h4>Água invisível em 1 kg de carne</h4>
-          <p>Somando a irrigação dos pastos, bebida do gado e limpeza, cada bife de 100g carrega <strong>1.540 litros de água oculta</strong>. Desperdiçar comida no prato é jogar rios no lixo.</p>
+          <p>Somando pastagens, irrigação e produção, cada bife de 100g carrega <strong>1.540 litros de água oculta</strong>. Desperdiçar comida no prato é jogar rios no lixo.</p>
         </div>
       </div>
 
-      <!-- TABELA COMPARATIVA EXPLÍCITA: USO EXCESSIVO VS CONSCIENTE -->
       <div class="card table-card">
         <div class="card-head-inline">
-          <h4>Comparativo Direto: Quanto mais se usa, mais se perde (por pessoa/mês)</h4>
-          <span class="villain-badge">Dados baseados em vazões médias residenciais</span>
+          <h4>Comparativo Direto: Uso Excessivo vs. Uso Consciente (por pessoa/mês)</h4>
+          <span class="villain-badge">Vazões médias residenciais</span>
         </div>
         <div class="table-responsive">
           <table class="data-table">
@@ -248,7 +215,7 @@
                 <th>Atividade Diária</th>
                 <th>Uso Excessivo (Sem Controle)</th>
                 <th>Uso Consciente (Sustentável)</th>
-                <th>Desperdício Mensal Evitado</th>
+                <th>Economia Mensal</th>
               </tr>
             </thead>
             <tbody>
@@ -272,7 +239,7 @@
               </tr>
               <tr>
                 <td><strong>Limpeza de calçada</strong> (18 L/min)</td>
-                <td class="col-high">Mangueira (1x/sem - 20 min) = <strong>1.440 L/mês</strong></td>
+                <td class="col-high">Mangueira (20 min/sem) = <strong>1.440 L/mês</strong></td>
                 <td class="col-low">Vassoura + 2 baldes = <strong>80 L/mês</strong></td>
                 <td class="col-save">1.360 litros salvos/mês</td>
               </tr>
@@ -288,12 +255,12 @@
       </div>
     </section>
 
-    <!-- SEÇÃO 3: SIMULADOR DE DIA ZERO -->
+    <!-- BLOCO 4: SIMULADOR DE DIA ZERO + GALERIA FOTOGRÁFICA -->
     <section id="dia-zero" class="section-block">
       <div class="section-head">
-        <span class="step-badge">03 • CONTAGEM REGRESSIVA</span>
+        <span class="step-badge">03 • CONTAGEM REGRESSIVA DA COMUNIDADE</span>
         <h3>Simulador de "Dia Zero"</h3>
-        <p>Em quantos dias o reservatório entraria em colapso se todos tivessem exatamente a sua rotina?</p>
+        <p>Em quantos dias o reservatório entraria em colapso (volume morto de 10%) se todos tivessem exatamente a sua rotina?</p>
       </div>
 
       <div class="card dz-box">
@@ -342,87 +309,68 @@
                 <strong id="dz-days-count">0 DIAS</strong>
               </div>
               <div class="dz-tile">
-                <span>DATA ESTIMADA</span>
+                <span>DATA ESTIMADA DO COLAPSO</span>
                 <strong id="dz-collapse-date">--/--/----</strong>
               </div>
             </div>
 
             <div class="dz-gain">
-              <span>Se a comunidade reduzir 25% do consumo:</span>
+              <span>Se a comunidade reduzir 25% do consumo diário:</span>
               <strong id="dz-saved-days">+0 dias de abastecimento garantidos</strong>
             </div>
 
             <p class="dz-note">
-              <strong>O que é o Dia Zero?</strong> Inspirado na crise hídrica da Cidade do Cabo, é o momento em que a represa atinge o volume morto (10%) e as torneiras são fechadas, obrigando a população a buscar cotas diárias de água em pontos de distribuição.
+              <strong>Inspirado na crise da Cidade do Cabo:</strong> o <em>Dia Zero</em> ocorre quando a represa atinge 10% de capacidade (volume morto) e as torneiras precisam ser fechadas, exigindo racionamento severo em pontos de distribuição.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SEÇÃO 4: GALERIA EDUCATIVA COM IMAGENS EMBUTIDAS -->
+    <!-- GALERIA FOTOGRÁFICA DOS 3 PILARES -->
     <section id="galeria" class="section-block">
       <div class="section-head">
-        <span class="step-badge green">04 • ENTENDA O CICLO E OS DESAFIOS</span>
+        <span class="step-badge green">04 • VISÃO AMBIENTAL</span>
         <h3>Três Pilares da Consciência Hídrica</h3>
-        <p>Preservar a água vai muito além de fechar a torneira: envolve proteger nascentes e evitar o desperdício invisível.</p>
+        <p>Da natureza preservada ao controle dentro de casa: cada escolha define o futuro das nossas reservas.</p>
       </div>
 
       <div class="gallery-grid">
         <article class="card media-card">
-          <svg viewBox="0 0 400 220" class="card-svg" role="img" aria-label="Nascentes e rios preservados">
-            <rect width="400" height="220" fill="#e0f2fe" />
-            <path d="M0 135 Q120 90 250 130 T400 110 L400 220 L0 220 Z" fill="#34d399" />
-            <path d="M0 160 Q180 120 400 165 L400 220 L0 220 Z" fill="#1d9bf0" />
-            <circle cx="95" cy="110" r="32" fill="#22b07d" />
-            <circle cx="130" cy="120" r="24" fill="#6ee7b7" />
-            <path d="M40 185 Q130 172 220 185 T380 182" stroke="#bae6fd" stroke-width="4" fill="none" stroke-linecap="round" />
-          </svg>
+          <img src="nascente-limpa.jpg" alt="Gotas de água limpa caindo sobre folhas verdes" class="card-photo" />
           <div class="media-body">
             <span class="mini-tag">PRESERVAÇÃO</span>
-            <h4>Proteção dos Mananciais</h4>
-            <p>Matas ciliares funcionam como esponjas naturais que filtram a chuva e mantêm rios e represas abastecidos o ano inteiro.</p>
+            <h4>Nascentes e Matas Ciliares</h4>
+            <p>Florestas protegem o solo e filtram a chuva, garantindo que rios e lençóis freáticos continuem abastecidos o ano inteiro.</p>
           </div>
         </article>
 
         <article class="card media-card">
-          <svg viewBox="0 0 400 220" class="card-svg" role="img" aria-label="Reservatório baixo e solo seco">
-            <rect width="400" height="220" fill="#f0f9ff" />
-            <path d="M0 125 L400 125 L400 220 L0 220 Z" fill="#bae6fd" />
-            <path d="M55 125 L80 165 L50 205 M80 165 L125 185 M210 125 L195 170 L230 215 M320 125 L340 160 L305 210" stroke="#4b7082" stroke-width="3" fill="none" stroke-linecap="round" />
-            <rect x="0" y="195" width="400" height="25" fill="#1d9bf0" opacity="0.45" />
-            <circle cx="310" cy="58" r="26" fill="#7dd3fc" opacity="0.6" />
-          </svg>
+          <img src="represa-seca.jpg" alt="Leito rachado e seco de um reservatório durante estiagem" class="card-photo" />
           <div class="media-body">
-            <span class="mini-tag">RISCO CLIMÁTICO</span>
-            <h4>Estiagem e Volume Morto</h4>
-            <p>Quando o consumo supera a capacidade de reposição das chuvas, o nível das represas cai e ameaça o abastecimento das cidades.</p>
+            <span class="mini-tag">RISCO DE ESCASSEZ</span>
+            <h4>Estiagem e Dia Zero</h4>
+            <p>Quando o consumo urbano supera a reposição das chuvas, as represas secam e colocam escolas, hospitais e famílias em risco.</p>
           </div>
         </article>
 
         <article class="card media-card">
-          <svg viewBox="0 0 400 220" class="card-svg" role="img" aria-label="Gota de água e folha verde simbolizando água invisível">
-            <rect width="400" height="220" fill="#edfaf3" />
-            <path d="M120 175 C120 105 215 70 290 85 C275 155 205 190 120 175 Z" fill="#22b07d" />
-            <path d="M120 175 L255 100" stroke="#a7f3d0" stroke-width="4" stroke-linecap="round" />
-            <path d="M200 35 C200 35 232 74 232 95 A32 32 0 1 1 168 95 C168 74 200 35 200 35 Z" fill="#1d9bf0" />
-            <circle cx="190" cy="88" r="7" fill="#bae6fd" />
-          </svg>
+          <img src="consumo-domestico.jpg" alt="Mãos sendo lavadas sob torneira moderna com controle de fluxo" class="card-photo" />
           <div class="media-body">
-            <span class="mini-tag">ÁGUA INVISÍVEL</span>
-            <h4>O Consumo Oculto</h4>
-            <p>Mais de 85% da água que usamos está escondida na produção de alimentos e roupas. Evitar o desperdício de comida poupa milhares de litros.</p>
+            <span class="mini-tag">CONTROLE DOMÉSTICO</span>
+            <h4>Uso Consciente na Torneira</h4>
+            <p>Fechar o registro ao ensaboar as mãos, escovar os dentes ou lavar a louça reduz o desperdício doméstico em até 60%.</p>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- SEÇÃO 5: QUIZ INTERATIVO SOBRE O CONTEÚDO -->
+    <!-- BLOCO 5: QUIZ INTERATIVO FINAL -->
     <section id="quiz" class="section-block">
       <div class="section-head">
         <span class="step-badge">05 • DESAFIO DE CONHECIMENTO</span>
-        <h3>Quiz: Você domina os números do consumo consciente?</h3>
-        <p>Responda às 4 questões baseadas nos dados apresentados no site e veja sua pontuação final.</p>
+        <h3>Quiz: Teste o que você aprendeu</h3>
+        <p>Responda às 4 questões baseadas nos dados apresentados no site e confira sua pontuação.</p>
       </div>
 
       <div class="card quiz-wrapper">

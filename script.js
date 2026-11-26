@@ -154,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("imp-pessoas").textContent =
       pessoas > 0 ? `${pessoas} ${pessoas === 1 ? "pessoa/dia" : "pessoas/dia"}` : "Meta sustentável atingida";
 
-    // Economia com banho de 6 min e torneira fechada (60% menor)
     const novoBanho = v.tempoBanho > 6 ? 6 : v.tempoBanho;
     const novoDiario =
       v.banhos * novoBanho * 9 +
@@ -195,9 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // =========================================================
-  // QUIZ INTERATIVO SOBRE OS DADOS DO SITE
-  // =========================================================
+  // QUIZ INTERATIVO FINAL
   const questoes = [
     {
       pergunta: "1. Quantos litros de água são gastos em apenas 1 banho de 15 minutos?",
@@ -205,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
       correta: 1,
     },
     {
-      pergunta: "2. Quanto água uma mangueira aberta consome em 15 minutos de limpeza?",
+      pergunta: "2. Quanta água uma mangueira aberta consome em 15 minutos de limpeza?",
       opcoes: ["270 litros (18 litros por minuto)", "30 litros", "10 litros"],
       correta: 0,
     },

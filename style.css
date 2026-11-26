@@ -187,15 +187,17 @@ body {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 2px solid var(--surface);
+  border: 3px solid var(--surface);
   box-shadow: var(--shadow);
   background: var(--surface);
+  height: 310px;
 }
 
-.scene-svg {
-  display: block;
+.hero-image-card img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .hero-float-badge {
@@ -203,7 +205,7 @@ body {
   bottom: 14px;
   left: 14px;
   right: 14px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
   padding: 12px 16px;
   border-radius: var(--radius-md);
@@ -454,7 +456,7 @@ input[type="range"] {
   line-height: 1.4;
 }
 
-/* SEÇÃO 2: DADOS EXPLÍCITOS E TABELA */
+/* BLOCO 3: DADOS EXPLÍCITOS */
 .facts-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -525,7 +527,7 @@ input[type="range"] {
   color: var(--green-mid);
 }
 
-/* DIA ZERO */
+/* BLOCO 4: DIA ZERO */
 .dz-box {
   display: flex;
   flex-direction: column;
@@ -742,7 +744,7 @@ input[type="range"] {
   color: var(--text-muted);
 }
 
-/* GALERIA */
+/* GALERIA FOTOGRÁFICA */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -756,9 +758,10 @@ input[type="range"] {
   flex-direction: column;
 }
 
-.card-svg {
+.card-photo {
   width: 100%;
-  height: auto;
+  height: 200px;
+  object-fit: cover;
   display: block;
   border-bottom: 1px solid var(--border);
 }
@@ -888,5 +891,9 @@ input[type="range"] {
 
   .header-pill {
     border-radius: 20px;
+  }
+
+  .hero-image-card {
+    height: 230px;
   }
 }
