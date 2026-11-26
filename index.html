@@ -1,478 +1,93 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AquaImpacto — Monitor Global de Pegada Hídrica e Ação Climática</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-  <!-- BARRA SUPERIOR -->
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <span class="brand-badge">RELATÓRIO DE IMPACTO HÍDRICO</span>
-        <h1>AquaImpacto</h1>
-      </div>
-      <nav class="nav-links">
-        <a href="#simulador">Pegada Direta</a>
-        <a href="#agua-invisivel">Água Invisível</a>
-        <a href="#antes-depois">Antes vs. Depois</a>
-        <a href="#pacto">Pacto Coletivo</a>
-        <a href="#documentacao">Projeto & Python</a>
-      </nav>
-      <button type="button" id="theme-toggle" class="theme-btn" aria-label="Alternar tema">
-        Modo Escuro
-      </button>
-    </div>
-  </header>
-
-  <!-- HERO EDITORIAL -->
-  <section class="hero">
-    <div class="container">
-      <p class="eyebrow">CONSCIÊNCIA AMBIENTAL • DADOS REAIS • AÇÃO COLETIVA</p>
-      <h2>A crise hídrica não começa nos rios secos. Ela começa nos hábitos invisíveis.</h2>
-      <p class="hero-sub">
-        Descubra sua pegada hídrica total — somando a água que sai da torneira e a água oculta no que você consome —
-        e simule como pequenas mudanças individuais transformam o futuro da sua comunidade.
-      </p>
-      <div class="preset-bar">
-        <span>Simular perfis:</span>
-        <button type="button" class="btn-preset" data-preset="economico">Perfil Sustentável</button>
-        <button type="button" class="btn-preset" data-preset="medio">Média Urbana Brasil</button>
-        <button type="button" class="btn-preset" data-preset="alto">Alto Impacto</button>
-      </div>
-    </div>
-  </section>
-
-  <main class="container">
-
-    <!-- SEÇÃO 1: USO DIRETO -->
-    <section id="simulador" class="section-block">
+<!-- SEÇÃO ESPECIAL: SIMULADOR DE DIA ZERO -->
+    <section id="dia-zero" class="section-block">
       <div class="section-heading">
-        <span class="eyebrow">01 • CONSUMO DOMÉSTICO DIRETO</span>
-        <h2>A água que passa pelas suas mãos</h2>
-        <p>Ajuste os controles abaixo e compare seu consumo diário com a meta sustentável da ONU (110 L/dia).</p>
+        <span class="eyebrow">ALERTA CLIMÁTICO • INSPIRADO NA CRISE DA CIDADE DO CABO</span>
+        <h2>Simulador de "Dia Zero" — Contagem Regressiva</h2>
+        <p>Em quantos dias o reservatório entraria em colapso total (volume morto de 10%) se todos repetissem exatamente a sua rotina diária?</p>
       </div>
 
-      <div class="dashboard-grid">
-        <div class="card inputs-card">
-          <div class="control-group">
-            <div class="control-label">
-              <label for="banhos">Banhos por dia</label>
-              <span class="val-badge" id="val-banhos">2 banhos</span>
+      <div class="dayzero-wrapper card">
+        <!-- CONTROLES DE CENÁRIO -->
+        <div class="dz-controls">
+          <div class="dz-scenarios">
+            <span class="dz-label">1. Escolha a escala do reservatório:</span>
+            <div class="dz-btn-group">
+              <button type="button" class="dz-scenario-btn active" data-scenario="escola">
+                Nossa Escola<br><small>800 pessoas • 500 mil L</small>
+              </button>
+              <button type="button" class="dz-scenario-btn" data-scenario="bairro">
+                Bairro Residencial<br><small>15.000 hab. • 30 mi L</small>
+              </button>
+              <button type="button" class="dz-scenario-btn" data-scenario="cidade">
+                Cidade Média<br><small>250.000 hab. • 600 mi L</small>
+              </button>
             </div>
-            <input type="range" id="banhos" min="0" max="5" step="1" value="2" />
           </div>
 
-          <div class="control-group">
+          <div class="dz-rain-control">
             <div class="control-label">
-              <label for="tempoBanho">Duração média de cada banho (9 L/min)</label>
-              <span class="val-badge" id="val-tempoBanho">10 min</span>
+              <label for="dz-rain">2. Nível de Estiagem / Reposição de Chuvas</label>
+              <span class="val-badge" id="val-dz-rain">10% (Seca Moderada)</span>
             </div>
-            <input type="range" id="tempoBanho" min="1" max="30" step="1" value="10" />
-          </div>
-
-          <div class="control-group">
-            <div class="control-label">
-              <label for="descargas">Descargas por dia (10 L/acionamento)</label>
-              <span class="val-badge" id="val-descargas">5 vezes</span>
-            </div>
-            <input type="range" id="descargas" min="1" max="15" step="1" value="5" />
-          </div>
-
-          <div class="control-group">
-            <div class="control-label">
-              <label for="higiene">Torneira aberta — dentes e mãos (6 L/min)</label>
-              <span class="val-badge" id="val-higiene">4 min/dia</span>
-            </div>
-            <input type="range" id="higiene" min="0" max="20" step="1" value="4" />
-          </div>
-
-          <div class="control-group">
-            <div class="control-label">
-              <label for="louca">Lavar louça com torneira aberta (8 L/min)</label>
-              <span class="val-badge" id="val-louca">10 min/dia</span>
-            </div>
-            <input type="range" id="louca" min="0" max="40" step="1" value="10" />
-          </div>
-
-          <div class="control-group">
-            <div class="control-label">
-              <label for="maquina">Máquina de lavar por semana (135 L/ciclo)</label>
-              <span class="val-badge" id="val-maquina">2 vezes/sem</span>
-            </div>
-            <input type="range" id="maquina" min="0" max="10" step="1" value="2" />
-          </div>
-
-          <div class="control-group">
-            <div class="control-label">
-              <label for="mangueira">Uso de mangueira por semana (18 L/min)</label>
-              <span class="val-badge" id="val-mangueira">15 min/sem</span>
-            </div>
-            <input type="range" id="mangueira" min="0" max="90" step="5" value="15" />
+            <input type="range" id="dz-rain" min="0" max="40" step="5" value="10" />
+            <small class="dz-hint">Na escala "Nossa Escola" (caixa fechada), a reposição natural por chuva é 0%.</small>
           </div>
         </div>
 
-        <div class="results-column">
-          <div class="kpi-grid">
-            <div class="kpi-card">
-              <span class="kpi-title">USO DIRETO DIÁRIO</span>
-              <strong class="kpi-number" id="kpi-diario">0 L</strong>
-              <span class="kpi-foot" id="kpi-status-badge">Calculando...</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-title">PROJEÇÃO MENSAL</span>
-              <strong class="kpi-number" id="kpi-mensal">0 L</strong>
-              <span class="kpi-foot" id="kpi-m3">0,00 m³/mês</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-title">PEGADA TOTAL (DIRETA + OCULTA)</span>
-              <strong class="kpi-number highlight-text" id="kpi-total-real">0 L/dia</strong>
-              <span class="kpi-foot">Impacto hídrico completo</span>
-            </div>
-          </div>
-
-          <div class="card ruler-card">
-            <div class="card-header">
-              <h3>Régua de Sustentabilidade (Uso Direto)</h3>
-              <p id="status-descricao">Comparativo com o limite de 110 litros/dia da ONU.</p>
-            </div>
-            <div class="ruler-wrapper">
-              <div class="ruler-bar">
-                <div class="ruler-fill" id="ruler-fill"></div>
+        <!-- MONITOR VISUAL DA REPRESA + CONTADOR DIGITAL -->
+        <div class="dz-monitor-grid">
+          <!-- TANQUE COM ONDAS ANIMADAS -->
+          <div class="reservoir-box">
+            <div class="reservoir-tank">
+              <div class="reservoir-water" id="dz-water-level">
+                <div class="wave wave1"></div>
+                <div class="wave wave2"></div>
               </div>
-              <div class="ruler-markers">
-                <div class="marker" style="left: 16.6%;"><span class="marker-line"></span><small>50L<br>Vital ONU</small></div>
-                <div class="marker" style="left: 36.6%;"><span class="marker-line"></span><small>110L<br>Meta ONU</small></div>
-                <div class="marker" style="left: 51.3%;"><span class="marker-line"></span><small>154L<br>Média BR</small></div>
+              <div class="dead-volume-line">
+                <span>VOLUME MORTO (10%)</span>
+              </div>
+              <div class="reservoir-overlay-text">
+                <span id="dz-tank-status">MONITORANDO NÍVEL</span>
+                <strong id="dz-tank-percent">100%</strong>
               </div>
             </div>
+            <p class="reservoir-caption" id="dz-collective-use">Consumo coletivo: 0 litros/dia</p>
           </div>
 
-          <div class="card">
-            <div class="card-header">
-              <h3>Raio-X do Gasto Direto (Litros/Dia)</h3>
+          <!-- PAINEL DE CONTAGEM REGRESSIVA -->
+          <div class="dz-countdown-panel">
+            <div class="dz-alert-header" id="dz-alert-banner">
+              <span class="pulse-dot"></span>
+              <span id="dz-alert-title">STATUS: RISCO DE COLAPSO HÍDRICO</span>
             </div>
-            <div id="breakdown-list" class="breakdown-list"></div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- SEÇÃO 2: ÁGUA INVISÍVEL -->
-    <section id="agua-invisivel" class="section-block">
-      <div class="section-heading">
-        <span class="eyebrow">02 • PEGADA HÍDRICA OCULTA (WATER FOOTPRINT NETWORK)</span>
-        <h2>A Água Invisível que você consome sem ver</h2>
-        <p>Mais de 85% da água que usamos está escondida na produção de alimentos, roupas e bens de consumo.</p>
-      </div>
-
-      <div class="invisible-grid">
-        <div class="card">
-          <div class="control-group">
-            <div class="control-label">
-              <label for="carne">Porções de carne bovina por semana (~1.540 L por bife de 100g)</label>
-              <span class="val-badge" id="val-carne">4 porções/sem</span>
+            <div class="dz-digital-display">
+              <div class="dz-counter-box">
+                <span class="dz-counter-label">TEMPO ATÉ O DIA ZERO</span>
+                <strong class="dz-days-number" id="dz-days-left">0 DIAS</strong>
+              </div>
+              <div class="dz-date-box">
+                <span class="dz-counter-label">DATA ESTIMADA DO COLAPSO</span>
+                <strong class="dz-target-date" id="dz-target-date">--/--/----</strong>
+              </div>
             </div>
-            <input type="range" id="carne" min="0" max="14" step="1" value="4" />
-          </div>
 
-          <div class="control-group">
-            <div class="control-label">
-              <label for="roupas">Peças de roupa novas compradas por mês (~2.700 L por peça)</label>
-              <span class="val-badge" id="val-roupas">2 peças/mês</span>
+            <!-- COMPARATIVO ROTINA ATUAL VS -25% -->
+            <div class="dz-comparison-grid">
+              <div class="dz-comp-card current">
+                <span>Com sua rotina atual</span>
+                <strong id="dz-comp-now">0 dias</strong>
+              </div>
+              <div class="dz-comp-card saved">
+                <span>Se todos reduzirem 25%</span>
+                <strong id="dz-comp-better">+0 dias ganhos</strong>
+              </div>
             </div>
-            <input type="range" id="roupas" min="0" max="12" step="1" value="2" />
-          </div>
 
-          <div class="control-group">
-            <div class="control-label">
-              <label for="desperdicioComida">Pratos de comida desperdiçados por semana (~1.000 L por prato)</label>
-              <span class="val-badge" id="val-desperdicioComida">2 pratos/sem</span>
-            </div>
-            <input type="range" id="desperdicioComida" min="0" max="10" step="1" value="2" />
-          </div>
-
-          <div class="control-group">
-            <div class="control-label">
-              <label for="papel">Folhas de papel impressas/usadas por semana (~10 L por folha A4)</label>
-              <span class="val-badge" id="val-papel">20 folhas/sem</span>
-            </div>
-            <input type="range" id="papel" min="0" max="100" step="5" value="20" />
-          </div>
-        </div>
-
-        <div class="invisible-summary card">
-          <span class="impact-tag">REVELAÇÃO DE IMPACTO</span>
-          <strong class="big-reveal" id="inv-total-dia">0 L / dia</strong>
-          <p class="reveal-sub">de água invisível embutida nos seus hábitos de consumo.</p>
-
-          <div class="comparison-pill">
-            <span>Proporção Invisível vs. Torneira:</span>
-            <strong id="inv-multiplier">0x maior que seu uso direto</strong>
-          </div>
-
-          <div class="consequences-mini">
-            <div class="mini-stat">
-              <strong id="imp-pessoas">0 pessoas</strong>
-              <span>Poderiam suprir o mínimo vital (50L/dia) apenas com o seu excedente direto.</span>
-            </div>
-            <div class="mini-stat">
-              <strong id="imp-caixas">0 caixas d'água</strong>
-              <span>De 1.000 litros consumidas anualmente apenas no uso doméstico direto.</span>
+            <div class="dz-edu-note">
+              <strong>O que acontece no Dia Zero?</strong> Quando a represa atinge o volume morto (10%), a pressão na rede cai e as torneiras são fechadas. Escolas e comércios param, e a população precisa enfrentar filas em pontos militares de distribuição para retirar cotas limitadas de água por dia.
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- SEÇÃO 3: ANTES VS DEPOIS -->
-    <section id="antes-depois" class="section-block">
-      <div class="section-heading">
-        <span class="eyebrow">03 • O PODER DA TRANSFORMAÇÃO INDIVIDUAL</span>
-        <h2>Simulador Antes vs. Depois</h2>
-        <p>Ative os micro-hábitos sustentáveis abaixo e veja quanto de água e dinheiro você devolve ao planeta.</p>
-      </div>
-
-      <div class="before-after-grid">
-        <div class="card habits-checklist">
-          <h3>Ative seus novos hábitos:</h3>
-          <label class="habit-toggle">
-            <input type="checkbox" id="hab-banho" checked />
-            <div>
-              <strong>Banho consciente de 6 minutos</strong>
-              <span>Reduz o tempo no chuveiro para no máximo 6 min por banho.</span>
-            </div>
-          </label>
-          <label class="habit-toggle">
-            <input type="checkbox" id="hab-torneira" checked />
-            <div>
-              <strong>Fechar a torneira ao escovar e ensaboar</strong>
-              <span>Corta em 60% o gasto nas pias do banheiro e da cozinha.</span>
-            </div>
-          </label>
-          <label class="habit-toggle">
-            <input type="checkbox" id="hab-balde" checked />
-            <div>
-              <strong>Trocar a mangueira por balde e vassoura</strong>
-              <span>Elimina 85% do desperdício na limpeza de calçadas e quintais.</span>
-            </div>
-          </label>
-          <label class="habit-toggle">
-            <input type="checkbox" id="hab-carne" />
-            <div>
-              <strong>Segunda-feira Sem Carne (reduzir 2 porções/sem)</strong>
-              <span>Economiza mais de 3.000 litros de água invisível toda semana.</span>
-            </div>
-          </label>
-        </div>
-
-        <div class="card savings-dashboard">
-          <div class="ba-compare">
-            <div class="ba-box before">
-              <span>ROTINA ATUAL (DIRETA)</span>
-              <strong id="ba-antes">0 L/ano</strong>
-            </div>
-            <div class="ba-arrow">→</div>
-            <div class="ba-box after">
-              <span>COM NOVOS HÁBITOS</span>
-              <strong id="ba-depois">0 L/ano</strong>
-            </div>
-          </div>
-
-          <div class="savings-highlight">
-            <span class="impact-tag">ECONOMIA TOTAL GERADA POR VOCÊ</span>
-            <strong class="savings-big" id="ba-economia-litros">0 litros / ano</strong>
-            <p id="ba-economia-detalhes">
-              Equivalente a <strong>0 caixas d'água</strong> de 1.000L salvas e <strong>R$ 0,00</strong> economizados por ano (<strong>R$ 0,00</strong> em 10 anos).
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO 4: PERSPECTIVA COLETIVA E PACTO -->
-    <section id="pacto" class="section-block">
-      <div class="section-heading">
-        <span class="eyebrow">04 • EFEITO BORBOLETA E COMPROMISSO</span>
-        <h2>Quando uma escola ou cidade muda, o futuro muda</h2>
-        <p>Veja o impacto multiplicado da economia que você acabou de simular e registre seu compromisso.</p>
-      </div>
-
-      <div class="two-col-grid">
-        <div class="card">
-          <div class="card-header">
-            <h3>Impacto Coletivo da Economia</h3>
-            <p>Se toda a comunidade adotar os mesmos hábitos sustentáveis que você marcou acima:</p>
-          </div>
-          <div class="scale-selector">
-            <button type="button" class="scale-btn active" data-scale="100">100 Alunos</button>
-            <button type="button" class="scale-btn" data-scale="1000">1.000 Famílias</button>
-            <button type="button" class="scale-btn" data-scale="50000">50.000 Habitantes</button>
-          </div>
-          <div class="butterfly-result">
-            <strong id="collective-saved">0 milhões de litros preservados/ano</strong>
-            <p id="collective-trucks">Suficiente para encher 0 caminhões-pipa de 10.000L e evitar racionamentos em períodos de seca.</p>
-          </div>
-        </div>
-
-        <div class="card pact-card">
-          <div class="card-header">
-            <h3>Gerador de Compromisso Hídrico</h3>
-            <p>Assine seu pacto pessoal e compartilhe com sua turma ou família.</p>
-          </div>
-          <div class="pact-form">
-            <input type="text" id="pact-name" placeholder="Digite seu nome completo..." />
-            <select id="pact-goal">
-              <option value="Reduzir meus banhos para 6 minutos">Meta: Reduzir meus banhos para 6 minutos</option>
-              <option value="Fechar a torneira ao escovar os dentes e lavar louça">Meta: Fechar a torneira ao escovar e ensaboar</option>
-              <option value="Eliminar o uso de mangueira na limpeza">Meta: Eliminar o uso de mangueira na limpeza</option>
-              <option value="Reduzir o desperdício de alimentos e água invisível">Meta: Reduzir água invisível e desperdício</option>
-            </select>
-            <button type="button" id="btn-generate-pact" class="btn-primary">Gerar Certificado e Copiar para Compartilhar</button>
-          </div>
-          <div id="pact-certificate" class="pact-certificate hidden">
-            <span class="cert-badge">COMPROMISSO ASSUMIDO</span>
-            <p id="cert-text"></p>
-            <small id="cert-feedback" class="cert-feedback"></small>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO 5: DOCUMENTAÇÃO E CÓDIGO PYTHON -->
-    <section id="documentacao" class="section-block">
-      <div class="section-heading">
-        <span class="eyebrow">05 • DOCUMENTAÇÃO ACADÊMICA E CÓDIGO-FONTE</span>
-        <h2>Etapas do Desenvolvimento do Projeto</h2>
-      </div>
-
-      <div class="docs-grid">
-        <article class="card doc-card">
-          <h3>Etapa 1 – Investigação</h3>
-          <ul>
-            <li><strong>Problema:</strong> Desperdício diário de água potável causado pela invisibilidade do consumo doméstico e da pegada hídrica oculta.</li>
-            <li><strong>Onde acontece:</strong> Nas residências dos estudantes, banheiros, pátios e cozinha da comunidade escolar.</li>
-            <li><strong>Afetados:</strong> Famílias (custo financeiro), estudantes e os mananciais locais sujeitos a estiagens e racionamento.</li>
-            <li><strong>Justificativa:</strong> A água doce é limitada; conscientizar por meio de dados concretos transforma hábitos cotidianos.</li>
-            <li><strong>Papel da Tecnologia:</strong> Traduzir minutos e hábitos em litros, impacto social e projeções de economia coletiva.</li>
-          </ul>
-        </article>
-
-        <article class="card doc-card">
-          <h3>Etapa 2 – Planejamento</h3>
-          <ul>
-            <li><strong>Objetivo:</strong> Calcular o consumo direto e invisível, comparar com a meta da ONU (110 L/dia) e simular cenários de economia.</li>
-            <li><strong>Entradas:</strong> Frequência/duração de banhos, descargas, torneiras, máquina de lavar, mangueira e hábitos de consumo.</li>
-            <li><strong>Processamento:</strong> Aplicação de coeficientes técnicos em litros, projeções anuais, cálculo de excedente vital (50 L/dia) e economia comparada.</li>
-            <li><strong>Saídas:</strong> Painel interativo web com modo escuro, certificado compartilhável e script em Python para terminal.</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="card code-card">
-        <div class="code-header">
-          <div>
-            <span class="eyebrow">ETAPA 3 — IMPLEMENTAÇÃO EM PYTHON (PEP 8)</span>
-            <h3>calculadora_agua.py</h3>
-          </div>
-          <button type="button" id="btn-copy-code" class="btn-primary">Copiar Código Python</button>
-        </div>
-        <pre><code id="python-source"># Etapa 3 - AquaImpacto: Calculadora de Pegada Hídrica e Consciência Ambiental
-# Padrões técnicos (litros):
-# Chuveiro: 9 L/min | Descarga: 10 L/uso | Torneira higiene: 6 L/min
-# Torneira louça: 8 L/min | Máquina lavar: 135 L/ciclo | Mangueira: 18 L/min
-
-
-def ler_numero(mensagem: str) -> float:
-    """Lê e valida um número não negativo informado pelo usuário."""
-    while True:
-        try:
-            valor = float(input(mensagem).replace(",", "."))
-            if valor < 0:
-                print("Erro: Informe um valor maior ou igual a zero.")
-            else:
-                return valor
-        except ValueError:
-            print("Entrada inválida. Digite apenas números (ex: 10 ou 5.5).")
-
-
-def executar_calculadora() -> None:
-    print("\n============================================================")
-    print("   AQUAIMPACTO - MONITOR DE PEGADA HÍDRICA E SUSTENTABILIDADE")
-    print("============================================================")
-
-    qtd_banhos = ler_numero("1. Quantos banhos você toma por dia? ")
-    tempo_banho = ler_numero("2. Duração média de cada banho (minutos): ")
-    descargas = ler_numero("3. Quantas descargas aciona por dia? ")
-    higiene = ler_numero("4. Minutos/dia com torneira aberta (dentes/mãos): ")
-    louca = ler_numero("5. Minutos/dia lavando louça com torneira aberta: ")
-    maquina_sem = ler_numero("6. Vezes por SEMANA que usa máquina de lavar: ")
-    mangueira_sem = ler_numero("7. Minutos por SEMANA usando mangueira: ")
-
-    atividades = {
-        "Banho": qtd_banhos * tempo_banho * 9.0,
-        "Descarga sanitária": descargas * 10.0,
-        "Torneira (dentes/mãos)": higiene * 6.0,
-        "Lavar louça": louca * 8.0,
-        "Máquina de lavar": (maquina_sem * 135.0) / 7.0,
-        "Uso de mangueira": (mangueira_sem * 18.0) / 7.0,
-    }
-
-    consumo_diario = sum(atividades.values())
-    consumo_mensal = consumo_diario * 30
-    consumo_anual = consumo_diario * 365
-    excesso_diario = max(0.0, consumo_diario - 110.0)
-    pessoas_atendidas = int(excesso_diario // 50)
-    caixas_agua_ano = consumo_anual / 1000.0
-    custo_anual = caixas_agua_ano * 8.50
-    maior_vilao = max(atividades, key=atividades.get)
-
-    print("\n--- DIAGNÓSTICO DETALHADO ---")
-    for nome, litros in atividades.items():
-        print(f"- {nome:<24}: {litros:6.1f} L/dia")
-
-    print("------------------------------------------------------------")
-    print(f"CONSUMO DIÁRIO  : {consumo_diario:.1f} litros (Meta ONU: 110 L/dia)")
-    print(f"CONSUMO MENSAL  : {consumo_mensal:.1f} litros ({consumo_mensal / 1000:.2f} m³)")
-    print(f"CONSUMO ANUAL   : {consumo_anual:,.0f} litros ({caixas_agua_ano:.1f} caixas de 1.000L)")
-    print(f"CUSTO ESTIMADO  : R$ {custo_anual:.2f}/ano (em 5 anos: R$ {custo_anual * 5:.2f})")
-    print("------------------------------------------------------------")
-
-    if consumo_diario <= 110:
-        print("CLASSIFICAÇÃO: SUSTENTÁVEL (Dentro da meta recomendada pela ONU).")
-    elif consumo_diario <= 180:
-        print("CLASSIFICAÇÃO: ALERTA DE EXCESSO (Acima da meta de 110 L/dia).")
-    else:
-        print("CLASSIFICAÇÃO: CRÍTICO (Alto desperdício hídrico).")
-
-    if pessoas_atendidas > 0:
-        print(f"CONSEQUÊNCIA HUMANA: Seu excedente supriria o mínimo vital de {pessoas_atendidas} pessoa(s)/dia.")
-
-    print(f"MAIOR VILÃO IDENTIFICADO: {maior_vilao} ({atividades[maior_vilao]:.1f} L/dia)")
-    print("============================================================\n")
-
-
-if __name__ == "__main__":
-    while True:
-        executar_calculadora()
-        repetir = input("Deseja fazer outra simulação? (S/N): ").strip().upper()
-        if repetir != "S":
-            print("Programa encerrado. Cada gota preserva o futuro!")
-            break</code></pre>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <p>AquaImpacto • Educação Ambiental, Ciência de Dados e Programação • Projeto Escolar</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
