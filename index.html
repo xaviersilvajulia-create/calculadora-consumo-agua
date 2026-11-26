@@ -3,67 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AquaImpacto — Plataforma de Consciência Hídrica e Sustentabilidade</title>
+  <title>AquaImpacto — Consciência Hídrica e Sustentabilidade</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- FUNDO DECORATIVO SUAVE -->
-  <div class="bg-orb orb-blue"></div>
-  <div class="bg-orb orb-green"></div>
-
-  <!-- CABEÇALHO FLUTUANTE -->
+  <!-- CABEÇALHO LIMPO -->
   <header class="floating-header">
     <div class="container header-pill">
       <div class="brand">
         <div class="brand-drop"></div>
         <div>
-          <span class="brand-tag">MONITOR AMBIENTAL</span>
+          <span class="brand-tag">PROJETO AMBIENTAL</span>
           <h1>AquaImpacto</h1>
         </div>
       </div>
 
       <nav class="pill-nav">
-        <a href="#painel-principal">Simulador</a>
+        <a href="#simulador">Simulador</a>
         <a href="#dia-zero">Dia Zero</a>
-        <a href="#agua-invisivel">Água Invisível</a>
-        <a href="#transformacao">Antes vs. Depois</a>
-        <a href="#projeto-escolar">Projeto & Python</a>
+        <a href="#galeria">Impacto Visual</a>
+        <a href="#quiz">Quiz</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO LIMPO E EDITORIAL -->
+  <!-- HERO COM ILUSTRAÇÃO EMBUTIDA -->
   <section class="hero-section">
-    <div class="container hero-layout">
-      <div class="hero-text">
-        <span class="eco-pill">TECNOLOGIA • ÁGUA LIMPA • FUTURO SUSTENTÁVEL</span>
-        <h2>Entenda o impacto real de cada gota que você usa.</h2>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="eco-pill">ÁGUA LIMPA • FUTURO SUSTENTÁVEL</span>
+        <h2>Cada gota economizada hoje garante a água de amanhã.</h2>
         <p>
-          Uma plataforma interativa que revela seu consumo direto e oculto, simula a contagem regressiva
-          dos reservatórios da sua cidade e mostra como pequenas mudanças preservam milhões de litros.
+          Apenas <strong>2,5% da água do planeta é doce</strong>, e menos de 1% está acessível para consumo humano.
+          Simule seus hábitos, descubra o risco de escassez da sua comunidade e teste o que aprendeu no quiz final.
         </p>
         <div class="preset-group">
-          <span class="preset-label">Carregar perfil:</span>
-          <button type="button" class="btn-chip" data-preset="economico">Rotina Sustentável</button>
-          <button type="button" class="btn-chip active" data-preset="medio">Média Brasileira</button>
-          <button type="button" class="btn-chip" data-preset="alto">Alto Consumo</button>
+          <span>Simular perfil:</span>
+          <button type="button" class="btn-chip" data-preset="economico">Econômico</button>
+          <button type="button" class="btn-chip active" data-preset="medio">Média Brasil</button>
+          <button type="button" class="btn-chip" data-preset="alto">Alto Gasto</button>
         </div>
       </div>
 
-      <!-- CARTÃO DE DESTAQUE DO HERO -->
-      <div class="hero-stat-card">
-        <div class="hero-stat-top">
-          <span>META SUSTENTÁVEL ONU</span>
-          <strong>110 L / dia</strong>
-        </div>
-        <div class="hero-divider"></div>
-        <div class="hero-stat-bottom">
-          <div>
-            <small>SEU USO DIRETO HOJE</small>
-            <strong id="hero-user-liters">0 L/dia</strong>
-          </div>
-          <span class="status-pill" id="hero-status-pill">Calculando</span>
+      <div class="hero-image-card">
+        <!-- ILUSTRAÇÃO EMBUTIDA: RIO LIMPO E NATUREZA -->
+        <svg viewBox="0 0 640 360" class="scene-svg" role="img" aria-label="Paisagem com rio cristalino e vegetação verde">
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#bae6fd" />
+              <stop offset="100%" stop-color="#f0f9ff" />
+            </linearGradient>
+            <linearGradient id="hillBack" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6ee7b7" />
+              <stop offset="100%" stop-color="#34d399" />
+            </linearGradient>
+            <linearGradient id="hillFront" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#22b07d" />
+              <stop offset="100%" stop-color="#158059" />
+            </linearGradient>
+            <linearGradient id="riverGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7dd3fc" />
+              <stop offset="50%" stop-color="#1d9bf0" />
+              <stop offset="100%" stop-color="#0284c7" />
+            </linearGradient>
+          </defs>
+          <rect width="640" height="360" fill="url(#skyGrad)" />
+          <circle cx="510" cy="78" r="38" fill="#ffffff" opacity="0.85" />
+          <path d="M0 200 Q160 120 340 185 T640 155 L640 360 L0 360 Z" fill="url(#hillBack)" />
+          <path d="M0 230 Q210 175 410 235 T640 205 L640 360 L0 360 Z" fill="url(#hillFront)" />
+          <!-- Rio sinuoso -->
+          <path d="M295 190 C260 225 385 245 315 285 C245 320 140 335 110 360 L470 360 C435 325 370 310 390 275 C415 235 325 215 325 190 Z" fill="url(#riverGrad)" />
+          <!-- Reflexos na água -->
+          <ellipse cx="325" cy="268" rx="34" ry="4" fill="#e0f2fe" opacity="0.7" />
+          <ellipse cx="275" cy="318" rx="52" ry="5" fill="#e0f2fe" opacity="0.6" />
+          <!-- Árvores estilizadas -->
+          <circle cx="115" cy="215" r="28" fill="#10b981" />
+          <circle cx="142" cy="222" r="22" fill="#34d399" />
+          <circle cx="515" cy="195" r="32" fill="#10b981" />
+          <circle cx="485" cy="208" r="24" fill="#6ee7b7" />
+        </svg>
+        <div class="hero-float-badge">
+          <small>META RECOMENDADA PELA ONU</small>
+          <strong>110 litros / dia por pessoa</strong>
         </div>
       </div>
     </div>
@@ -71,23 +93,20 @@
 
   <main class="container">
 
-    <!-- BENTO GRID 1: SIMULADOR DIRETO + RESERVATÓRIO VIVO -->
-    <section id="painel-principal" class="bento-section">
-      <div class="section-title-row">
-        <div>
-          <span class="step-badge">01 • SIMULADOR INTERATIVO</span>
-          <h3>Sua Rotina Hídrica Diária</h3>
-        </div>
-        <p>Deslize os controles e observe o reservatório reagir em tempo real.</p>
+    <!-- SEÇÃO 1: SIMULADOR DIRETO -->
+    <section id="simulador" class="section-block">
+      <div class="section-head">
+        <span class="step-badge">01 • CALCULADORA INTERATIVA</span>
+        <h3>Quanto você consome por dia?</h3>
+        <p>Ajuste os controles de acordo com sua rotina e veja o impacto imediato.</p>
       </div>
 
-      <div class="bento-main-grid">
-        <!-- CONTROLES -->
-        <div class="bento-card controls-panel">
+      <div class="sim-grid">
+        <div class="card">
           <div class="slider-item">
             <div class="slider-head">
               <label for="banhos">Banhos por dia</label>
-              <span class="value-tag blue" id="val-banhos">2 banhos</span>
+              <span class="val-tag blue" id="val-banhos">2 banhos</span>
             </div>
             <input type="range" id="banhos" min="0" max="5" step="1" value="2" />
           </div>
@@ -95,7 +114,7 @@
           <div class="slider-item">
             <div class="slider-head">
               <label for="tempoBanho">Duração média de cada banho (9 L/min)</label>
-              <span class="value-tag blue" id="val-tempoBanho">10 min</span>
+              <span class="val-tag blue" id="val-tempoBanho">10 min</span>
             </div>
             <input type="range" id="tempoBanho" min="1" max="30" step="1" value="10" />
           </div>
@@ -103,7 +122,7 @@
           <div class="slider-item">
             <div class="slider-head">
               <label for="descargas">Descargas por dia (10 L/uso)</label>
-              <span class="value-tag blue" id="val-descargas">5 vezes</span>
+              <span class="val-tag blue" id="val-descargas">5 vezes</span>
             </div>
             <input type="range" id="descargas" min="1" max="15" step="1" value="5" />
           </div>
@@ -111,7 +130,7 @@
           <div class="slider-item">
             <div class="slider-head">
               <label for="higiene">Torneira aberta — dentes e mãos (6 L/min)</label>
-              <span class="value-tag green" id="val-higiene">4 min/dia</span>
+              <span class="val-tag green" id="val-higiene">4 min/dia</span>
             </div>
             <input type="range" id="higiene" min="0" max="20" step="1" value="4" />
           </div>
@@ -119,7 +138,7 @@
           <div class="slider-item">
             <div class="slider-head">
               <label for="louca">Lavar louça com torneira aberta (8 L/min)</label>
-              <span class="value-tag green" id="val-louca">10 min/dia</span>
+              <span class="val-tag green" id="val-louca">10 min/dia</span>
             </div>
             <input type="range" id="louca" min="0" max="40" step="1" value="10" />
           </div>
@@ -127,7 +146,7 @@
           <div class="slider-item">
             <div class="slider-head">
               <label for="maquina">Máquina de lavar por semana (135 L/ciclo)</label>
-              <span class="value-tag blue" id="val-maquina">2 vezes/sem</span>
+              <span class="val-tag blue" id="val-maquina">2 vezes/sem</span>
             </div>
             <input type="range" id="maquina" min="0" max="10" step="1" value="2" />
           </div>
@@ -135,434 +154,200 @@
           <div class="slider-item">
             <div class="slider-head">
               <label for="mangueira">Uso de mangueira por semana (18 L/min)</label>
-              <span class="value-tag green" id="val-mangueira">15 min/sem</span>
+              <span class="val-tag green" id="val-mangueira">15 min/sem</span>
             </div>
             <input type="range" id="mangueira" min="0" max="90" step="5" value="15" />
           </div>
         </div>
 
-        <!-- RESULTADOS + TANQUE VIVO -->
-        <div class="bento-right-stack">
-          <div class="kpi-trio">
-            <div class="bento-card kpi-mini">
-              <span class="kpi-label">CONSUMO DIÁRIO</span>
-              <strong class="kpi-val text-blue" id="kpi-diario">0 L</strong>
-              <small id="kpi-comparativo">Meta: 110 L/dia</small>
+        <div class="results-stack">
+          <div class="kpi-row">
+            <div class="card kpi-box">
+              <span>CONSUMO DIÁRIO</span>
+              <strong class="text-blue" id="kpi-diario">0 L</strong>
+              <small id="kpi-status">Dentro da meta</small>
             </div>
-            <div class="bento-card kpi-mini">
-              <span class="kpi-label">VOLUME MENSAL</span>
-              <strong class="kpi-val text-teal" id="kpi-mensal">0 L</strong>
+            <div class="card kpi-box">
+              <span>PROJEÇÃO MENSAL</span>
+              <strong class="text-teal" id="kpi-mensal">0 L</strong>
               <small id="kpi-m3">0,00 m³/mês</small>
             </div>
-            <div class="bento-card kpi-mini">
-              <span class="kpi-label">IMPACTO ANUAL</span>
-              <strong class="kpi-val text-green" id="kpi-anual">0 mil L</strong>
+            <div class="card kpi-box">
+              <span>IMPACTO ANUAL</span>
+              <strong class="text-green" id="kpi-anual">0 mil L</strong>
               <small id="kpi-caixas">0 caixas de 1.000L</small>
             </div>
           </div>
 
-          <!-- RAIO-X POR ATIVIDADE -->
-          <div class="bento-card">
-            <div class="card-top-flex">
-              <h4>Distribuição do Consumo Diário</h4>
-              <span class="villain-pill" id="maior-vilao-tag">Maior gasto: —</span>
+          <div class="card">
+            <div class="card-head-inline">
+              <h4>Onde está seu maior gasto?</h4>
+              <span class="villain-badge" id="maior-vilao">Maior gasto: —</span>
             </div>
-            <div id="breakdown-bars" class="bars-container"></div>
+            <div id="breakdown-bars" class="bars-list"></div>
           </div>
 
-          <!-- CONSEQUÊNCIA HUMANA E FINANCEIRA -->
-          <div class="consequence-duo">
-            <div class="bento-card soft-blue-card">
-              <span class="mini-eyebrow">DIGNIDADE HUMANA (ONU)</span>
+          <div class="consequence-cards">
+            <div class="card soft-blue">
+              <span class="mini-tag">CONSEQUÊNCIA HUMANA</span>
               <strong id="imp-pessoas">0 pessoas/dia</strong>
-              <p>Poderiam ter seu mínimo vital (50 L/dia) garantido apenas com o excedente do seu gasto diário.</p>
+              <p>Poderiam suprir seu mínimo vital (50 L/dia — ONU) apenas com o excesso do seu gasto diário.</p>
             </div>
-            <div class="bento-card soft-green-card">
-              <span class="mini-eyebrow">IMPACTO FINANCEIRO ESTIMADO</span>
-              <strong id="imp-custo">R$ 0,00 / ano</strong>
-              <p id="imp-custo-5anos">Projeção de R$ 0,00 acumulados na conta ao longo de 5 anos.</p>
+            <div class="card soft-green">
+              <span class="mini-tag">ECONOMIA COM BONS HÁBITOS</span>
+              <strong id="imp-economia">0 litros/ano</strong>
+              <p>É o quanto você salva ao reduzir o banho para 6 min e fechar a torneira ao ensaboar.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- BENTO GRID 2: SIMULADOR DE DIA ZERO -->
-    <section id="dia-zero" class="bento-section">
-      <div class="section-title-row">
-        <div>
-          <span class="step-badge green">02 • CONTAGEM REGRESSIVA HÍDRICA</span>
-          <h3>Simulador de "Dia Zero" da Comunidade</h3>
-        </div>
-        <p>Em quantos dias o reservatório entraria em colapso se todos repetissem exatamente a sua rotina?</p>
+    <!-- SEÇÃO 2: SIMULADOR DE DIA ZERO -->
+    <section id="dia-zero" class="section-block">
+      <div class="section-head">
+        <span class="step-badge green">02 • CONTAGEM REGRESSIVA</span>
+        <h3>Simulador de "Dia Zero"</h3>
+        <p>Em quantos dias o reservatório entraria em colapso se todos tivessem exatamente a sua rotina?</p>
       </div>
 
-      <div class="bento-card dayzero-bento">
-        <div class="dz-top-controls">
-          <div>
-            <span class="control-caption">1. Selecione a escala do reservatório:</span>
-            <div class="dz-tabs">
-              <button type="button" class="dz-tab active" data-scenario="escola">
-                Nossa Escola
-                <span>800 pessoas • 500 mil L</span>
-              </button>
-              <button type="button" class="dz-tab" data-scenario="bairro">
-                Bairro Residencial
-                <span>15.000 hab. • 30 mi L</span>
-              </button>
-              <button type="button" class="dz-tab" data-scenario="cidade">
-                Cidade Média
-                <span>250.000 hab. • 600 mi L</span>
-              </button>
-            </div>
+      <div class="card dz-box">
+        <div class="dz-top">
+          <div class="dz-tabs">
+            <button type="button" class="dz-tab active" data-scenario="escola">
+              Nossa Escola<br><small>800 pessoas • 500 mil L</small>
+            </button>
+            <button type="button" class="dz-tab" data-scenario="bairro">
+              Bairro Residencial<br><small>15.000 hab. • 30 mi L</small>
+            </button>
+            <button type="button" class="dz-tab" data-scenario="cidade">
+              Cidade Média<br><small>250.000 hab. • 600 mi L</small>
+            </button>
           </div>
 
-          <div class="dz-rain-box">
+          <div class="dz-rain">
             <div class="slider-head">
-              <label for="dz-rain">2. Reposição por Chuvas</label>
-              <span class="value-tag green" id="val-dz-rain">0% (Caixa Fechada)</span>
+              <label for="dz-rain">Reposição por chuvas</label>
+              <span class="val-tag green" id="val-dz-rain">0% (Caixa Fechada)</span>
             </div>
             <input type="range" id="dz-rain" min="0" max="40" step="5" value="15" />
-            <small id="dz-rain-hint">Na escala escolar, o tanque depende do abastecimento externo.</small>
           </div>
         </div>
 
-        <div class="dz-visual-grid">
-          <!-- RESERVATÓRIO COM ONDAS -->
-          <div class="tank-container">
-            <div class="tank-glass">
-              <div class="tank-water" id="dz-water-fill">
-                <div class="water-wave w1"></div>
-                <div class="water-wave w2"></div>
+        <div class="dz-body">
+          <div class="tank-visual">
+            <div class="tank-frame">
+              <div class="tank-fill" id="dz-water-fill">
+                <div class="wave w1"></div>
+                <div class="wave w2"></div>
               </div>
-              <div class="tank-limit-line">
-                <span>VOLUME MORTO (10%)</span>
-              </div>
-              <div class="tank-center-badge">
-                <small id="dz-tank-label">NÍVEL DA RESERVA</small>
+              <div class="tank-dead-line"><span>VOLUME MORTO (10%)</span></div>
+              <div class="tank-label-box">
+                <small>RESERVA</small>
                 <strong id="dz-tank-pct">75%</strong>
               </div>
             </div>
-            <span class="tank-foot" id="dz-collective-flow">Demanda coletiva: 0 litros/dia</span>
+            <span class="tank-foot" id="dz-collective-flow">Consumo coletivo: 0 litros/dia</span>
           </div>
 
-          <!-- PAINEL DE CONTAGEM -->
-          <div class="dz-metrics-area">
-            <div class="dz-status-strip" id="dz-status-strip">
-              <span class="dot-indicator"></span>
-              <span id="dz-status-text">MONITORANDO RESERVATÓRIO</span>
-            </div>
-
-            <div class="dz-cards-row">
-              <div class="dz-stat-tile">
+          <div class="dz-metrics">
+            <div class="dz-tiles">
+              <div class="dz-tile">
                 <span>TEMPO ATÉ O DIA ZERO</span>
                 <strong id="dz-days-count">0 DIAS</strong>
               </div>
-              <div class="dz-stat-tile">
-                <span>DATA DO COLAPSO</span>
+              <div class="dz-tile">
+                <span>DATA ESTIMADA</span>
                 <strong id="dz-collapse-date">--/--/----</strong>
               </div>
             </div>
 
-            <div class="dz-gain-banner">
-              <div>
-                <span>Se a comunidade reduzir 25% do consumo:</span>
-                <strong id="dz-saved-days">+0 dias de abastecimento garantidos</strong>
-              </div>
+            <div class="dz-gain">
+              <span>Se a comunidade reduzir 25% do consumo:</span>
+              <strong id="dz-saved-days">+0 dias de abastecimento garantidos</strong>
             </div>
 
-            <p class="dz-explanation">
-              <strong>Por que isso importa?</strong> Inspirado na crise hídrica da Cidade do Cabo, o <em>Dia Zero</em> ocorre quando a represa atinge o volume morto e as torneiras precisam ser fechadas, exigindo racionamento severo e pontos de distribuição.
+            <p class="dz-note">
+              <strong>O que é o Dia Zero?</strong> Inspirado na crise hídrica da Cidade do Cabo, é o momento em que a represa atinge o volume morto (10%) e as torneiras são fechadas, obrigando a população a buscar cotas diárias de água em pontos de distribuição.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- BENTO GRID 3: ÁGUA INVISÍVEL -->
-    <section id="agua-invisivel" class="bento-section">
-      <div class="section-title-row">
-        <div>
-          <span class="step-badge">03 • PEGADA HÍDRICA OCULTA</span>
-          <h3>A Água Invisível no seu Estilo de Vida</h3>
-        </div>
-        <p>Mais de 85% da água que consumimos está escondida na produção de alimentos e roupas.</p>
+    <!-- SEÇÃO 3: GALERIA EDUCATIVA COM IMAGENS EMBUTIDAS -->
+    <section id="galeria" class="section-block">
+      <div class="section-head">
+        <span class="step-badge">03 • ENTENDA O CICLO E OS DESAFIOS</span>
+        <h3>Três Pilares da Consciência Hídrica</h3>
+        <p>Preservar a água vai muito além de fechar a torneira: envolve proteger nascentes e evitar o desperdício invisível.</p>
       </div>
 
-      <div class="invisible-bento-grid">
-        <div class="bento-card">
-          <div class="slider-item">
-            <div class="slider-head">
-              <label for="carne">Carne bovina por semana (~1.540 L por bife de 100g)</label>
-              <span class="value-tag blue" id="val-carne">4 porções/sem</span>
-            </div>
-            <input type="range" id="carne" min="0" max="14" step="1" value="4" />
+      <div class="gallery-grid">
+        <article class="card media-card">
+          <svg viewBox="0 0 400 220" class="card-svg" role="img" aria-label="Nascentes e rios preservados">
+            <rect width="400" height="220" fill="#e0f2fe" />
+            <path d="M0 135 Q120 90 250 130 T400 110 L400 220 L0 220 Z" fill="#34d399" />
+            <path d="M0 160 Q180 120 400 165 L400 220 L0 220 Z" fill="#1d9bf0" />
+            <circle cx="95" cy="110" r="32" fill="#22b07d" />
+            <circle cx="130" cy="120" r="24" fill="#6ee7b7" />
+            <path d="M40 185 Q130 172 220 185 T380 182" stroke="#bae6fd" stroke-width="4" fill="none" stroke-linecap="round" />
+          </svg>
+          <div class="media-body">
+            <span class="mini-tag">PRESERVAÇÃO</span>
+            <h4>Proteção dos Mananciais</h4>
+            <p>Matas ciliares funcionam como esponjas naturais que filtram a chuva e mantêm rios e represas abastecidos o ano inteiro.</p>
           </div>
+        </article>
 
-          <div class="slider-item">
-            <div class="slider-head">
-              <label for="roupas">Roupas novas compradas por mês (~2.700 L por peça)</label>
-              <span class="value-tag green" id="val-roupas">2 peças/mês</span>
-            </div>
-            <input type="range" id="roupas" min="0" max="12" step="1" value="2" />
+        <article class="card media-card">
+          <svg viewBox="0 0 400 220" class="card-svg" role="img" aria-label="Reservatório baixo e solo seco">
+            <rect width="400" height="220" fill="#f0f9ff" />
+            <path d="M0 125 L400 125 L400 220 L0 220 Z" fill="#bae6fd" />
+            <!-- Rachaduras estilizadas de estiagem -->
+            <path d="M55 125 L80 165 L50 205 M80 165 L125 185 M210 125 L195 170 L230 215 M320 125 L340 160 L305 210" stroke="#4b7082" stroke-width="3" fill="none" stroke-linecap="round" />
+            <rect x="0" y="195" width="400" height="25" fill="#1d9bf0" opacity="0.45" />
+            <circle cx="310" cy="58" r="26" fill="#7dd3fc" opacity="0.6" />
+          </svg>
+          <div class="media-body">
+            <span class="mini-tag">RISCO CLIMÁTICO</span>
+            <h4>Estiagem e Volume Morto</h4>
+            <p>Quando o consumo supera a capacidade de reposição das chuvas, o nível das represas cai e ameaça o abastecimento das cidades.</p>
           </div>
+        </article>
 
-          <div class="slider-item">
-            <div class="slider-head">
-              <label for="desperdicioComida">Pratos de comida jogados fora por semana (~1.000 L/prato)</label>
-              <span class="value-tag blue" id="val-desperdicioComida">2 pratos/sem</span>
-            </div>
-            <input type="range" id="desperdicioComida" min="0" max="10" step="1" value="2" />
+        <article class="card media-card">
+          <svg viewBox="0 0 400 220" class="card-svg" role="img" aria-label="Gota de água e folha verde simbolizando água invisível">
+            <rect width="400" height="220" fill="#edfaf3" />
+            <path d="M120 175 C120 105 215 70 290 85 C275 155 205 190 120 175 Z" fill="#22b07d" />
+            <path d="M120 175 L255 100" stroke="#a7f3d0" stroke-width="4" stroke-linecap="round" />
+            <path d="M200 35 C200 35 232 74 232 95 A32 32 0 1 1 168 95 C168 74 200 35 200 35 Z" fill="#1d9bf0" />
+            <circle cx="190" cy="88" r="7" fill="#bae6fd" />
+          </svg>
+          <div class="media-body">
+            <span class="mini-tag">ÁGUA INVISÍVEL</span>
+            <h4>O Consumo Oculto</h4>
+            <p>Mais de 85% da água que usamos está escondida na produção de alimentos e roupas. Evitar o desperdício de comida poupa milhares de litros.</p>
           </div>
-
-          <div class="slider-item">
-            <div class="slider-head">
-              <label for="papel">Folhas de papel usadas por semana (~10 L por folha)</label>
-              <span class="value-tag green" id="val-papel">20 folhas/sem</span>
-            </div>
-            <input type="range" id="papel" min="0" max="100" step="5" value="20" />
-          </div>
-        </div>
-
-        <div class="bento-card gradient-highlight-card">
-          <span class="mini-eyebrow">PEGADA HÍDRICA TOTAL (DIRETA + INVISÍVEL)</span>
-          <strong class="giant-metric" id="inv-total-geral">0 L / dia</strong>
-          <p class="giant-sub">
-            Deste total, <strong id="inv-apenas-oculta">0 L/dia</strong> são de água invisível —
-            <strong id="inv-proporcao">0x</strong> mais do que você gasta abrindo as torneiras de casa.
-          </p>
-          <div class="eco-tip-box">
-            <strong>Reflexão Sustentável:</strong> Evitar o desperdício de comida e repensar o consumo excessivo preserva rios inteiros usados na agricultura e na indústria.
-          </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <!-- BENTO GRID 4: ANTES VS DEPOIS + PACTO -->
-    <section id="transformacao" class="bento-section">
-      <div class="section-title-row">
-        <div>
-          <span class="step-badge green">04 • AÇÃO E COMPROMISSO</span>
-          <h3>Simulador Antes vs. Depois & Pacto Escolar</h3>
-        </div>
-        <p>Ative novos hábitos, veja quanto você economiza no ano e gere seu certificado de compromisso.</p>
+    <!-- SEÇÃO 4: QUIZ INTERATIVO SOBRE O CONTEÚDO -->
+    <section id="quiz" class="section-block">
+      <div class="section-head">
+        <span class="step-badge green">04 • DESAFIO DE CONHECIMENTO</span>
+        <h3>Quiz: Você domina o consumo consciente?</h3>
+        <p>Responda às 4 questões baseadas no conteúdo do site e veja sua pontuação final.</p>
       </div>
 
-      <div class="transform-grid">
-        <!-- CHECKLIST DE HÁBITOS -->
-        <div class="bento-card">
-          <h4>Escolha suas metas de economia:</h4>
-          <div class="habits-list">
-            <label class="habit-card-check">
-              <input type="checkbox" id="hab-banho" checked />
-              <div>
-                <strong>Banho consciente de 6 minutos</strong>
-                <span>Limita cada banho a 6 min sem perder o conforto.</span>
-              </div>
-            </label>
+      <div class="card quiz-wrapper">
+        <div id="quiz-questions" class="quiz-list"></div>
 
-            <label class="habit-card-check">
-              <input type="checkbox" id="hab-torneira" checked />
-              <div>
-                <strong>Fechar a torneira ao escovar e ensaboar</strong>
-                <span>Reduz em 60% o gasto nas pias da casa.</span>
-              </div>
-            </label>
-
-            <label class="habit-card-check">
-              <input type="checkbox" id="hab-balde" checked />
-              <div>
-                <strong>Vassoura e balde no lugar da mangueira</strong>
-                <span>Corta 85% da água gasta na limpeza externa.</span>
-              </div>
-            </label>
-
-            <label class="habit-card-check">
-              <input type="checkbox" id="hab-carne" />
-              <div>
-                <strong>Reduzir 2 porções de carne na semana</strong>
-                <span>Economiza mais de 3.000 litros de água invisível por semana.</span>
-              </div>
-            </label>
-          </div>
-
-          <div class="savings-result-box">
-            <div class="ba-row">
-              <div>
-                <small>ANTES (DIRETO)</small>
-                <strong id="ba-antes">0 L/ano</strong>
-              </div>
-              <span class="arrow-pill">→</span>
-              <div>
-                <small>DEPOIS (DIRETO)</small>
-                <strong class="text-green" id="ba-depois">0 L/ano</strong>
-              </div>
-            </div>
-            <div class="total-saved-line">
-              <span>Economia total gerada:</span>
-              <strong id="ba-economia-total">0 litros/ano (R$ 0,00)</strong>
-            </div>
-          </div>
+        <div class="quiz-footer">
+          <button type="button" id="btn-check-quiz" class="btn-gradient">Verificar Respostas</button>
+          <div id="quiz-result" class="quiz-result hidden"></div>
         </div>
-
-        <!-- GERADOR DE CERTIFICADO -->
-        <div class="bento-card pact-bento">
-          <h4>Certificado de Compromisso Hídrico</h4>
-          <p class="pact-desc">
-            Registre seu nome, escolha sua principal ação e copie seu cartão de compromisso para inspirar sua turma e família.
-          </p>
-
-          <div class="pact-inputs">
-            <input type="text" id="pact-name" placeholder="Seu nome completo..." />
-            <select id="pact-goal">
-              <option value="Reduzir meus banhos para 6 minutos">Meta: Reduzir meus banhos para 6 minutos</option>
-              <option value="Fechar a torneira ao escovar os dentes e lavar louça">Meta: Fechar a torneira ao escovar e ensaboar</option>
-              <option value="Substituir a mangueira por balde e vassoura">Meta: Substituir a mangueira por balde</option>
-              <option value="Combater o desperdício de água direta e invisível">Meta: Combater o desperdício de água direta e invisível</option>
-            </select>
-            <button type="button" id="btn-generate-pact" class="btn-action-gradient">
-              Gerar e Copiar Compromisso
-            </button>
-          </div>
-
-          <div id="pact-certificate" class="cert-card hidden">
-            <span class="cert-seal">PASSAPORTE SUSTENTÁVEL AQUAIMPACTO</span>
-            <p id="cert-text"></p>
-            <small id="cert-feedback"></small>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BENTO GRID 5: DOCUMENTAÇÃO ESCOLAR E CÓDIGO PYTHON -->
-    <section id="projeto-escolar" class="bento-section">
-      <div class="section-title-row">
-        <div>
-          <span class="step-badge">05 • DOCUMENTAÇÃO ACADÊMICA E CÓDIGO</span>
-          <h3>Etapas do Projeto & Script em Python</h3>
-        </div>
-        <p>Estrutura completa do trabalho escolar com o código-fonte pronto para execução.</p>
-      </div>
-
-      <div class="docs-bento-grid">
-        <article class="bento-card">
-          <span class="doc-step">ETAPA 1</span>
-          <h4>Investigação do Problema</h4>
-          <ul class="clean-list">
-            <li><strong>Problema:</strong> Consumo excessivo e desperdício de água potável por falta de visibilidade sobre os gastos diários e ocultos.</li>
-            <li><strong>Onde ocorre:</strong> Residências dos alunos, banheiros, pátio e cozinha da escola.</li>
-            <li><strong>Afetados:</strong> Comunidade escolar, orçamento das famílias e mananciais locais sujeitos à estiagem.</li>
-            <li><strong>Papel da Tecnologia:</strong> Converter hábitos em indicadores visuais claros, simular o Dia Zero e incentivar ações coletivas.</li>
-          </ul>
-        </article>
-
-        <article class="bento-card">
-          <span class="doc-step green">ETAPA 2</span>
-          <h4>Planejamento da Solução</h4>
-          <ul class="clean-list">
-            <li><strong>Objetivo:</strong> Calcular o consumo diário, mensal e anual, comparar com a meta da ONU (110 L/dia) e projetar economias.</li>
-            <li><strong>Entradas:</strong> Banhos, descargas, torneiras, máquina de lavar, mangueira e hábitos de consumo invisível.</li>
-            <li><strong>Processamento:</strong> Multiplicação por vazões médias em litros, cálculo de excedente vital (50 L/dia) e simulação de reservatórios.</li>
-            <li><strong>Saídas:</strong> Painel interativo responsivo na web e programa estruturado em Python.</li>
-          </ul>
-        </article>
-      </div>
-
-      <!-- BLOCO PYTHON -->
-      <div class="bento-card code-bento">
-        <div class="code-top-bar">
-          <div>
-            <span class="doc-step">ETAPA 3 • CÓDIGO-FONTE PYTHON</span>
-            <h4>calculadora_agua.py</h4>
-          </div>
-          <button type="button" id="btn-copy-code" class="btn-copy-py">Copiar Código Python</button>
-        </div>
-        <pre><code id="python-source"># Etapa 3 - AquaImpacto: Calculadora de Consumo de Água e Consciência Ambiental
-# Vazões médias utilizadas (litros):
-# Chuveiro: 9 L/min | Descarga: 10 L/uso | Torneira higiene: 6 L/min
-# Torneira louça: 8 L/min | Máquina lavar: 135 L/ciclo | Mangueira: 18 L/min
-
-
-def ler_numero(mensagem: str) -> float:
-    """Lê e valida um número não negativo informado pelo usuário."""
-    while True:
-        try:
-            valor = float(input(mensagem).replace(",", "."))
-            if valor < 0:
-                print("Erro: Digite um valor maior ou igual a zero.")
-            else:
-                return valor
-        except ValueError:
-            print("Entrada inválida. Digite apenas números (ex: 10 ou 5.5).")
-
-
-def executar_calculadora() -> None:
-    print("\n============================================================")
-    print("   AQUAIMPACTO - MONITOR DE CONSUMO E CONSCIÊNCIA HÍDRICA")
-    print("============================================================")
-
-    qtd_banhos = ler_numero("1. Quantos banhos você toma por dia? ")
-    tempo_banho = ler_numero("2. Duração média de cada banho (minutos): ")
-    descargas = ler_numero("3. Quantas descargas aciona por dia? ")
-    higiene = ler_numero("4. Minutos/dia com torneira aberta (dentes/mãos): ")
-    louca = ler_numero("5. Minutos/dia lavando louça com torneira aberta: ")
-    maquina_sem = ler_numero("6. Vezes por SEMANA que usa máquina de lavar: ")
-    mangueira_sem = ler_numero("7. Minutos por SEMANA usando mangueira: ")
-
-    atividades = {
-        "Banho": qtd_banhos * tempo_banho * 9.0,
-        "Descarga sanitária": descargas * 10.0,
-        "Torneira (dentes/mãos)": higiene * 6.0,
-        "Lavar louça": louca * 8.0,
-        "Máquina de lavar": (maquina_sem * 135.0) / 7.0,
-        "Uso de mangueira": (mangueira_sem * 18.0) / 7.0,
-    }
-
-    consumo_diario = sum(atividades.values())
-    consumo_mensal = consumo_diario * 30
-    consumo_anual = consumo_diario * 365
-    excesso_diario = max(0.0, consumo_diario - 110.0)
-    pessoas_atendidas = int(excesso_diario // 50)
-    caixas_agua_ano = consumo_anual / 1000.0
-    custo_anual = caixas_agua_ano * 8.50
-    maior_vilao = max(atividades, key=atividades.get)
-
-    # Simulação Dia Zero (Escola: 800 pessoas | Reservatório útil: 450.000 L)
-    dias_escola = int(450000 // max(1.0, consumo_diario * 800))
-
-    print("\n--- DIAGNÓSTICO DE CONSUMO ---")
-    for nome, litros in atividades.items():
-        print(f"- {nome:<24}: {litros:6.1f} L/dia")
-
-    print("------------------------------------------------------------")
-    print(f"CONSUMO DIÁRIO  : {consumo_diario:.1f} litros (Meta ONU: 110 L/dia)")
-    print(f"CONSUMO MENSAL  : {consumo_mensal:.1f} litros ({consumo_mensal / 1000:.2f} m³)")
-    print(f"CONSUMO ANUAL   : {consumo_anual:,.0f} litros ({caixas_agua_ano:.1f} caixas de 1.000L)")
-    print(f"CUSTO ESTIMADO  : R$ {custo_anual:.2f}/ano (em 5 anos: R$ {custo_anual * 5:.2f})")
-    print(f"DIA ZERO ESCOLA : {dias_escola} dias (para 800 alunos com tanque de 500 mil L)")
-    print("------------------------------------------------------------")
-
-    if consumo_diario <= 110:
-        print("STATUS: SUSTENTÁVEL (Dentro da meta recomendada pela ONU).")
-    elif consumo_diario <= 180:
-        print("STATUS: ALERTA DE EXCESSO (Acima da meta de 110 L/dia).")
-    else:
-        print("STATUS: CRÍTICO (Alto desperdício hídrico).")
-
-    if pessoas_atendidas > 0:
-        print(f"IMPACTO SOCIAL: Seu excedente supriria o mínimo vital de {pessoas_atendidas} pessoa(s)/dia.")
-
-    print(f"MAIOR VILÃO   : {maior_vilao} ({atividades[maior_vilao]:.1f} L/dia)")
-    print("============================================================\n")
-
-
-if __name__ == "__main__":
-    while True:
-        executar_calculadora()
-        repetir = input("Deseja fazer outra simulação? (S/N): ").strip().upper()
-        if repetir != "S":
-            print("Programa encerrado. Preserve cada gota!")
-            break</code></pre>
       </div>
     </section>
 
