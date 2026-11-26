@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mensal = diario * 30;
     const anual = diario * 365;
     const caixas = anual / 1000;
+    const custoAnual = caixas * 8.5;
 
     document.getElementById("kpi-diario").textContent = `${fmt(diario, 0)} L`;
     document.getElementById("kpi-status").textContent =
@@ -131,11 +132,15 @@ document.addEventListener("DOMContentLoaded", () => {
     barsContainer.innerHTML = "";
     ordenadas.forEach((item) => {
       const perc = diario > 0 ? (item.litros / diario) * 100 : 0;
+      const litrosAnoItem = item.litros * 365;
       const div = document.createElement("div");
       div.innerHTML = `
         <div class="bar-top">
           <span>${item.nome}</span>
-          <span>${fmt(item.litros, 1)} L (${fmt(perc, 0)}%)</span>
+          <span>
+            <strong>${fmt(item.litros, 1)} L/dia</strong>
+            <span class="bar-sub-detail">(${fmt(litrosAnoItem, 0)} L/ano • ${fmt(perc, 0)}%)</span>
+          </span>
         </div>
         <div class="bar-track">
           <div class="bar-fill" style="width:${perc}%"></div>
@@ -159,7 +164,9 @@ document.addEventListener("DOMContentLoaded", () => {
       (v.mangueira * 0.15 * 18) / 7 +
       v.higiene * 0.4 * 6;
     const economiaAno = Math.max(0, (diario - novoDiario) * 365);
-    document.getElementById("imp-economia").textContent = `${fmt(economiaAno, 0)} litros/ano`;
+    document.getElementById("imp-custo-anual").textContent = `R$ ${fmt(custoAnual, 2)} / ano`;
+    document.getElementById("imp-economia").textContent =
+      `Reduzindo o banho para 6 min e fechando a torneira, você poupa ${fmt(economiaAno, 0)} litros/ano.`;
 
     atualizarDiaZero(diario);
   }
@@ -189,36 +196,32 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =========================================================
-  // QUIZ INTERATIVO SOBRE O CONTEÚDO DO SITE
+  // QUIZ INTERATIVO SOBRE OS DADOS DO SITE
   // =========================================================
   const questoes = [
     {
-      pergunta: "1. Qual é o consumo diário máximo recomendado pela ONU para atender às necessidades básicas com sustentabilidade?",
-      opcoes: ["500 litros por dia", "110 litros por dia", "5 litros por dia"],
+      pergunta: "1. Quantos litros de água são gastos em apenas 1 banho de 15 minutos?",
+      opcoes: ["45 litros", "135 litros (90 litros a mais que um banho de 5 min)", "15 litros"],
       correta: 1,
     },
     {
-      pergunta: "2. O que significa o termo 'Dia Zero' mostrado no simulador?",
-      opcoes: [
-        "O dia em que começa a temporada de chuvas fortes.",
-        "O momento em que o reservatório atinge o volume morto (10%) e as torneiras são fechadas.",
-        "O dia em que a conta de água vem zerada.",
-      ],
-      correta: 1,
-    },
-    {
-      pergunta: "3. Qual porcentagem aproximada da água do planeta é doce e está acessível para consumo humano?",
-      opcoes: ["Menos de 1%", "Cerca de 50%", "Mais de 70%"],
+      pergunta: "2. Quanto água uma mangueira aberta consome em 15 minutos de limpeza?",
+      opcoes: ["270 litros (18 litros por minuto)", "30 litros", "10 litros"],
       correta: 0,
     },
     {
-      pergunta: "4. Onde está concentrada a chamada 'Água Invisível' que consumimos todos os dias?",
+      pergunta: "3. O que acontece quando um reservatório atinge o 'Dia Zero' (volume morto de 10%)?",
       opcoes: [
-        "Apenas na água que evapora da piscina.",
-        "Na produção de alimentos, roupas e bens que utilizamos.",
-        "Somente na lavagem de carros.",
+        "A água fica mais barata na conta.",
+        "As torneiras são fechadas e a população precisa buscar cotas diárias em pontos de distribuição.",
+        "Os rios enchem automaticamente.",
       ],
       correta: 1,
+    },
+    {
+      pergunta: "4. Qual é o limite diário sustentável recomendado pela ONU por pessoa?",
+      opcoes: ["110 litros por dia", "450 litros por dia", "10 litros por dia"],
+      correta: 0,
     },
   ];
 

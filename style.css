@@ -97,7 +97,7 @@ body {
 
 .pill-nav {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
@@ -141,7 +141,7 @@ body {
 }
 
 .hero-content h2 {
-  font-size: 2.2rem;
+  font-size: 2.15rem;
   line-height: 1.2;
   font-weight: 800;
   margin-bottom: 14px;
@@ -382,7 +382,7 @@ input[type="range"] {
 .bars-list {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 12px;
 }
 
 .bar-top {
@@ -391,6 +391,13 @@ input[type="range"] {
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 4px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bar-sub-detail {
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .bar-track {
@@ -445,6 +452,77 @@ input[type="range"] {
   font-size: 0.83rem;
   color: var(--text-muted);
   line-height: 1.4;
+}
+
+/* SEÇÃO 2: DADOS EXPLÍCITOS E TABELA */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.fact-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fact-number {
+  font-size: 1.55rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.fact-card h4 {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.fact-card p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 12px 14px;
+  background: var(--surface-blue);
+  color: var(--text-main);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--border);
+}
+
+.data-table td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.col-high {
+  color: #0369a1;
+}
+
+.col-low {
+  color: #137a55;
+}
+
+.col-save {
+  font-weight: 800;
+  color: var(--green-mid);
 }
 
 /* DIA ZERO */
@@ -797,6 +875,7 @@ input[type="range"] {
 @media (max-width: 900px) {
   .hero-grid,
   .sim-grid,
+  .facts-grid,
   .dz-top,
   .dz-body,
   .gallery-grid,

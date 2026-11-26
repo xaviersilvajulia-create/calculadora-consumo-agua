@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AquaImpacto — Consciência Hídrica e Sustentabilidade</title>
+  <title>AquaImpacto — Dados Reais e Consciência Hídrica</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -20,9 +20,10 @@
       </div>
 
       <nav class="pill-nav">
-        <a href="#simulador">Simulador</a>
+        <a href="#simulador">Calculadora</a>
+        <a href="#dados-explicitos">Dados & Gastos</a>
         <a href="#dia-zero">Dia Zero</a>
-        <a href="#galeria">Impacto Visual</a>
+        <a href="#galeria">Consciência</a>
         <a href="#quiz">Quiz</a>
       </nav>
     </div>
@@ -32,22 +33,21 @@
   <section class="hero-section">
     <div class="container hero-grid">
       <div class="hero-content">
-        <span class="eco-pill">ÁGUA LIMPA • FUTURO SUSTENTÁVEL</span>
-        <h2>Cada gota economizada hoje garante a água de amanhã.</h2>
+        <span class="eco-pill">DADOS EXPLÍCITOS • CONSUMO REAL • IMPACTO NO BOLSO</span>
+        <h2>Quanto mais você usa sem perceber, mais água e dinheiro vão pelo ralo.</h2>
         <p>
-          Apenas <strong>2,5% da água do planeta é doce</strong>, e menos de 1% está acessível para consumo humano.
-          Simule seus hábitos, descubra o risco de escassez da sua comunidade e teste o que aprendeu no quiz final.
+          Apenas <strong>2,5% da água do planeta é doce</strong>, e menos de 1% está acessível para consumo.
+          Cada minuto a mais no chuveiro, na torneira aberta ou na mangueira multiplica o desperdício em milhares de litros por ano.
         </p>
         <div class="preset-group">
-          <span>Simular perfil:</span>
-          <button type="button" class="btn-chip" data-preset="economico">Econômico</button>
-          <button type="button" class="btn-chip active" data-preset="medio">Média Brasil</button>
-          <button type="button" class="btn-chip" data-preset="alto">Alto Gasto</button>
+          <span>Compare na prática:</span>
+          <button type="button" class="btn-chip" data-preset="economico">Uso Consciente</button>
+          <button type="button" class="btn-chip active" data-preset="medio">Média Brasileira</button>
+          <button type="button" class="btn-chip" data-preset="alto">Uso Excessivo</button>
         </div>
       </div>
 
       <div class="hero-image-card">
-        <!-- ILUSTRAÇÃO EMBUTIDA: RIO LIMPO E NATUREZA -->
         <svg viewBox="0 0 640 360" class="scene-svg" role="img" aria-label="Paisagem com rio cristalino e vegetação verde">
           <defs>
             <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
@@ -72,19 +72,16 @@
           <circle cx="510" cy="78" r="38" fill="#ffffff" opacity="0.85" />
           <path d="M0 200 Q160 120 340 185 T640 155 L640 360 L0 360 Z" fill="url(#hillBack)" />
           <path d="M0 230 Q210 175 410 235 T640 205 L640 360 L0 360 Z" fill="url(#hillFront)" />
-          <!-- Rio sinuoso -->
           <path d="M295 190 C260 225 385 245 315 285 C245 320 140 335 110 360 L470 360 C435 325 370 310 390 275 C415 235 325 215 325 190 Z" fill="url(#riverGrad)" />
-          <!-- Reflexos na água -->
           <ellipse cx="325" cy="268" rx="34" ry="4" fill="#e0f2fe" opacity="0.7" />
           <ellipse cx="275" cy="318" rx="52" ry="5" fill="#e0f2fe" opacity="0.6" />
-          <!-- Árvores estilizadas -->
           <circle cx="115" cy="215" r="28" fill="#10b981" />
           <circle cx="142" cy="222" r="22" fill="#34d399" />
           <circle cx="515" cy="195" r="32" fill="#10b981" />
           <circle cx="485" cy="208" r="24" fill="#6ee7b7" />
         </svg>
         <div class="hero-float-badge">
-          <small>META RECOMENDADA PELA ONU</small>
+          <small>LIMITE SUSTENTÁVEL DA ONU</small>
           <strong>110 litros / dia por pessoa</strong>
         </div>
       </div>
@@ -96,9 +93,9 @@
     <!-- SEÇÃO 1: SIMULADOR DIRETO -->
     <section id="simulador" class="section-block">
       <div class="section-head">
-        <span class="step-badge">01 • CALCULADORA INTERATIVA</span>
-        <h3>Quanto você consome por dia?</h3>
-        <p>Ajuste os controles de acordo com sua rotina e veja o impacto imediato.</p>
+        <span class="step-badge">01 • SIMULADOR DE GASTOS DIÁRIOS</span>
+        <h3>Quanto mais você utiliza, maior é o impacto</h3>
+        <p>Aumente ou diminua os controles e veja exatamente quantos litros e reais cada hábito consome.</p>
       </div>
 
       <div class="sim-grid">
@@ -113,7 +110,7 @@
 
           <div class="slider-item">
             <div class="slider-head">
-              <label for="tempoBanho">Duração média de cada banho (9 L/min)</label>
+              <label for="tempoBanho">Duração de cada banho (9 litros/minuto)</label>
               <span class="val-tag blue" id="val-tempoBanho">10 min</span>
             </div>
             <input type="range" id="tempoBanho" min="1" max="30" step="1" value="10" />
@@ -121,7 +118,7 @@
 
           <div class="slider-item">
             <div class="slider-head">
-              <label for="descargas">Descargas por dia (10 L/uso)</label>
+              <label for="descargas">Descargas por dia (10 litros/acionamento)</label>
               <span class="val-tag blue" id="val-descargas">5 vezes</span>
             </div>
             <input type="range" id="descargas" min="1" max="15" step="1" value="5" />
@@ -129,7 +126,7 @@
 
           <div class="slider-item">
             <div class="slider-head">
-              <label for="higiene">Torneira aberta — dentes e mãos (6 L/min)</label>
+              <label for="higiene">Torneira aberta — dentes e mãos (6 litros/min)</label>
               <span class="val-tag green" id="val-higiene">4 min/dia</span>
             </div>
             <input type="range" id="higiene" min="0" max="20" step="1" value="4" />
@@ -137,7 +134,7 @@
 
           <div class="slider-item">
             <div class="slider-head">
-              <label for="louca">Lavar louça com torneira aberta (8 L/min)</label>
+              <label for="louca">Lavar louça com torneira aberta (8 litros/min)</label>
               <span class="val-tag green" id="val-louca">10 min/dia</span>
             </div>
             <input type="range" id="louca" min="0" max="40" step="1" value="10" />
@@ -145,7 +142,7 @@
 
           <div class="slider-item">
             <div class="slider-head">
-              <label for="maquina">Máquina de lavar por semana (135 L/ciclo)</label>
+              <label for="maquina">Máquina de lavar por semana (135 litros/ciclo)</label>
               <span class="val-tag blue" id="val-maquina">2 vezes/sem</span>
             </div>
             <input type="range" id="maquina" min="0" max="10" step="1" value="2" />
@@ -153,7 +150,7 @@
 
           <div class="slider-item">
             <div class="slider-head">
-              <label for="mangueira">Uso de mangueira por semana (18 L/min)</label>
+              <label for="mangueira">Mangueira ligada por semana (18 litros/min)</label>
               <span class="val-tag green" id="val-mangueira">15 min/sem</span>
             </div>
             <input type="range" id="mangueira" min="0" max="90" step="5" value="15" />
@@ -163,17 +160,17 @@
         <div class="results-stack">
           <div class="kpi-row">
             <div class="card kpi-box">
-              <span>CONSUMO DIÁRIO</span>
+              <span>GASTO DIÁRIO</span>
               <strong class="text-blue" id="kpi-diario">0 L</strong>
               <small id="kpi-status">Dentro da meta</small>
             </div>
             <div class="card kpi-box">
-              <span>PROJEÇÃO MENSAL</span>
+              <span>GASTO MENSAL</span>
               <strong class="text-teal" id="kpi-mensal">0 L</strong>
               <small id="kpi-m3">0,00 m³/mês</small>
             </div>
             <div class="card kpi-box">
-              <span>IMPACTO ANUAL</span>
+              <span>GASTO ANUAL</span>
               <strong class="text-green" id="kpi-anual">0 mil L</strong>
               <small id="kpi-caixas">0 caixas de 1.000L</small>
             </div>
@@ -181,7 +178,7 @@
 
           <div class="card">
             <div class="card-head-inline">
-              <h4>Onde está seu maior gasto?</h4>
+              <h4>Raio-X Explícito: Quanto cada atividade consome por dia e por ano</h4>
               <span class="villain-badge" id="maior-vilao">Maior gasto: —</span>
             </div>
             <div id="breakdown-bars" class="bars-list"></div>
@@ -189,24 +186,112 @@
 
           <div class="consequence-cards">
             <div class="card soft-blue">
-              <span class="mini-tag">CONSEQUÊNCIA HUMANA</span>
+              <span class="mini-tag">IMPACTO SOCIAL DIRETO</span>
               <strong id="imp-pessoas">0 pessoas/dia</strong>
-              <p>Poderiam suprir seu mínimo vital (50 L/dia — ONU) apenas com o excesso do seu gasto diário.</p>
+              <p>Poderiam sobreviver com o mínimo vital de água (50 L/dia — ONU) usando apenas o excedente que você gasta acima da meta.</p>
             </div>
             <div class="card soft-green">
-              <span class="mini-tag">ECONOMIA COM BONS HÁBITOS</span>
-              <strong id="imp-economia">0 litros/ano</strong>
-              <p>É o quanto você salva ao reduzir o banho para 6 min e fechar a torneira ao ensaboar.</p>
+              <span class="mini-tag">CUSTO FINANCEIRO DO DESPERDÍCIO</span>
+              <strong id="imp-custo-anual">R$ 0,00 / ano</strong>
+              <p id="imp-economia">Reduzindo o banho para 6 min e fechando a torneira, você poupa 0 litros/ano.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SEÇÃO 2: SIMULADOR DE DIA ZERO -->
+    <!-- SEÇÃO 2: DADOS EXPLÍCITOS DE CONSUMO E DESPERDÍCIO -->
+    <section id="dados-explicitos" class="section-block">
+      <div class="section-head">
+        <span class="step-badge green">02 • NÚMEROS QUE ABREM OS OLHOS</span>
+        <h3>A matemática real do uso excessivo</h3>
+        <p>Veja de forma clara e direta o que acontece quando aumentamos o tempo de uso no dia a dia.</p>
+      </div>
+
+      <!-- 4 CARTÕES DE IMPACTO NUMÉRICO -->
+      <div class="facts-grid">
+        <div class="card fact-card">
+          <span class="fact-number text-blue">135 Litros</span>
+          <h4>1 banho de 15 minutos</h4>
+          <p>Enquanto um banho rápido de <strong>5 minutos gasta 45 litros</strong>, estender para 15 minutos triplica o gasto: são <strong>90 litros jogados fora em um único banho</strong> (32.850 L/ano).</p>
+        </div>
+
+        <div class="card fact-card">
+          <span class="fact-number text-teal">270 Litros</span>
+          <h4>15 min de mangueira aberta</h4>
+          <p>Lavar a calçada ou o carro com mangueira consome <strong>18 litros por minuto</strong>. Usar vassoura e um balde de 10 litros economiza <strong>96% dessa água</strong>.</p>
+        </div>
+
+        <div class="card fact-card">
+          <span class="fact-number text-green">46 Litros/dia</span>
+          <h4>Torneira pingando sem parar</h4>
+          <p>Uma torneira gotejando desperdiça <strong>1.380 litros por mês</strong> (mais de uma caixa d'água cheia). Se for um filete fino de 2 mm, o prejuízo passa de <strong>4.000 litros/mês</strong>.</p>
+        </div>
+
+        <div class="card fact-card">
+          <span class="fact-number text-blue">15.400 Litros</span>
+          <h4>Água invisível em 1 kg de carne</h4>
+          <p>Somando a irrigação dos pastos, bebida do gado e limpeza, cada bife de 100g carrega <strong>1.540 litros de água oculta</strong>. Desperdiçar comida no prato é jogar rios no lixo.</p>
+        </div>
+      </div>
+
+      <!-- TABELA COMPARATIVA EXPLÍCITA: USO EXCESSIVO VS CONSCIENTE -->
+      <div class="card table-card">
+        <div class="card-head-inline">
+          <h4>Comparativo Direto: Quanto mais se usa, mais se perde (por pessoa/mês)</h4>
+          <span class="villain-badge">Dados baseados em vazões médias residenciais</span>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Atividade Diária</th>
+                <th>Uso Excessivo (Sem Controle)</th>
+                <th>Uso Consciente (Sustentável)</th>
+                <th>Desperdício Mensal Evitado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Banho no chuveiro</strong> (9 L/min)</td>
+                <td class="col-high">15 min/dia = <strong>4.050 L/mês</strong></td>
+                <td class="col-low">6 min/dia = <strong>1.620 L/mês</strong></td>
+                <td class="col-save">2.430 litros salvos/mês</td>
+              </tr>
+              <tr>
+                <td><strong>Escovar os dentes</strong> (6 L/min)</td>
+                <td class="col-high">Torneira aberta (3x/dia) = <strong>540 L/mês</strong></td>
+                <td class="col-low">Torneira fechada = <strong>45 L/mês</strong></td>
+                <td class="col-save">495 litros salvos/mês</td>
+              </tr>
+              <tr>
+                <td><strong>Lavar a louça</strong> (8 L/min)</td>
+                <td class="col-high">15 min aberta = <strong>3.600 L/mês</strong></td>
+                <td class="col-low">Ensaboar fechada (5 min) = <strong>1.200 L/mês</strong></td>
+                <td class="col-save">2.400 litros salvos/mês</td>
+              </tr>
+              <tr>
+                <td><strong>Limpeza de calçada</strong> (18 L/min)</td>
+                <td class="col-high">Mangueira (1x/sem - 20 min) = <strong>1.440 L/mês</strong></td>
+                <td class="col-low">Vassoura + 2 baldes = <strong>80 L/mês</strong></td>
+                <td class="col-save">1.360 litros salvos/mês</td>
+              </tr>
+              <tr>
+                <td><strong>Descarga sanitária</strong> (10 L/uso)</td>
+                <td class="col-high">8 acionamentos/dia = <strong>2.400 L/mês</strong></td>
+                <td class="col-low">4 acionamentos/dia = <strong>1.200 L/mês</strong></td>
+                <td class="col-save">1.200 litros salvos/mês</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: SIMULADOR DE DIA ZERO -->
     <section id="dia-zero" class="section-block">
       <div class="section-head">
-        <span class="step-badge green">02 • CONTAGEM REGRESSIVA</span>
+        <span class="step-badge">03 • CONTAGEM REGRESSIVA</span>
         <h3>Simulador de "Dia Zero"</h3>
         <p>Em quantos dias o reservatório entraria em colapso se todos tivessem exatamente a sua rotina?</p>
       </div>
@@ -275,10 +360,10 @@
       </div>
     </section>
 
-    <!-- SEÇÃO 3: GALERIA EDUCATIVA COM IMAGENS EMBUTIDAS -->
+    <!-- SEÇÃO 4: GALERIA EDUCATIVA COM IMAGENS EMBUTIDAS -->
     <section id="galeria" class="section-block">
       <div class="section-head">
-        <span class="step-badge">03 • ENTENDA O CICLO E OS DESAFIOS</span>
+        <span class="step-badge green">04 • ENTENDA O CICLO E OS DESAFIOS</span>
         <h3>Três Pilares da Consciência Hídrica</h3>
         <p>Preservar a água vai muito além de fechar a torneira: envolve proteger nascentes e evitar o desperdício invisível.</p>
       </div>
@@ -304,7 +389,6 @@
           <svg viewBox="0 0 400 220" class="card-svg" role="img" aria-label="Reservatório baixo e solo seco">
             <rect width="400" height="220" fill="#f0f9ff" />
             <path d="M0 125 L400 125 L400 220 L0 220 Z" fill="#bae6fd" />
-            <!-- Rachaduras estilizadas de estiagem -->
             <path d="M55 125 L80 165 L50 205 M80 165 L125 185 M210 125 L195 170 L230 215 M320 125 L340 160 L305 210" stroke="#4b7082" stroke-width="3" fill="none" stroke-linecap="round" />
             <rect x="0" y="195" width="400" height="25" fill="#1d9bf0" opacity="0.45" />
             <circle cx="310" cy="58" r="26" fill="#7dd3fc" opacity="0.6" />
@@ -333,12 +417,12 @@
       </div>
     </section>
 
-    <!-- SEÇÃO 4: QUIZ INTERATIVO SOBRE O CONTEÚDO -->
+    <!-- SEÇÃO 5: QUIZ INTERATIVO SOBRE O CONTEÚDO -->
     <section id="quiz" class="section-block">
       <div class="section-head">
-        <span class="step-badge green">04 • DESAFIO DE CONHECIMENTO</span>
-        <h3>Quiz: Você domina o consumo consciente?</h3>
-        <p>Responda às 4 questões baseadas no conteúdo do site e veja sua pontuação final.</p>
+        <span class="step-badge">05 • DESAFIO DE CONHECIMENTO</span>
+        <h3>Quiz: Você domina os números do consumo consciente?</h3>
+        <p>Responda às 4 questões baseadas nos dados apresentados no site e veja sua pontuação final.</p>
       </div>
 
       <div class="card quiz-wrapper">
